@@ -1,1 +1,2 @@
-export 'unicorn/unicorn.dart';
+export 'player.dart';
+export 'snowman.dart';
