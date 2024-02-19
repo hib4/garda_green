@@ -6,6 +6,7 @@ import 'package:garda_green/game/game.dart';
 import 'package:garda_green/game/level/level.dart';
 import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/settings/settings.dart';
+import 'package:garda_green/theme/theme.dart';
 import 'package:garda_green/utils/utils.dart';
 
 class GameView extends StatelessWidget {
@@ -16,46 +17,41 @@ class GameView extends StatelessWidget {
   static PageRoute<void> route() {
     return buildPageTransition(
       child: const GameView(),
-      color: Colors.green,
+      color: AppColors.primary,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      onPopInvoked: (_) {
-        context.read<AudioController>().changeMusic(Song.background);
-      },
-      child: GameWidget<TheRunnerGame>(
-        game: TheRunnerGame(
-          audioController: context.read<AudioController>(),
-          settingsController: context.read<SettingsController>(),
-          mediaQuery: MediaQuery.of(context),
-        ),
-        overlayBuilderMap: {
-          PauseMenu.id: (context, game) {
-            return PauseMenu(
-              onResumePressed: () => onResume(context, game),
-              onRestartPressed: () => onRestart(context, game),
-              onExitPressed: () => onExit(context, game),
-            );
-          },
-          RetryMenu.id: (context, game) {
-            return RetryMenu(
-              onRetryPressed: () => onRestart(context, game),
-              onExitPressed: () => onExit(context, game),
-            );
-          },
-          LevelComplete.id: (context, game) {
-            return LevelComplete(
-              nStars: 3,
-              onNextPressed: () {},
-              onRetryPressed: () => onRestart(context, game),
-              onExitPressed: () => onExit(context, game),
-            );
-          },
-        },
+    return GameWidget<TheRunnerGame>(
+      game: TheRunnerGame(
+        audioController: context.read<AudioController>(),
+        settingsController: context.read<SettingsController>(),
+        mediaQuery: MediaQuery.of(context),
       ),
+      overlayBuilderMap: {
+        PauseMenu.id: (context, game) {
+          return PauseMenu(
+            onResumePressed: () => onResume(context, game),
+            onRestartPressed: () => onRestart(context, game),
+            onExitPressed: () => onExit(context, game),
+          );
+        },
+        GameOverMenu.id: (context, game) {
+          return GameOverMenu(
+            onRetryPressed: () => onRestart(context, game),
+            onExitPressed: () => onExit(context, game),
+          );
+        },
+        LevelComplete.id: (context, game) {
+          return LevelComplete(
+            nStars: 3,
+            onNextPressed: () {},
+            onRetryPressed: () => onRestart(context, game),
+            onExitPressed: () => onExit(context, game),
+          );
+        },
+      },
     );
   }
 
@@ -65,16 +61,14 @@ class GameView extends StatelessWidget {
   }
 
   void onRestart(BuildContext context, TheRunnerGame game) {
-    Navigator.pushAndRemoveUntil(
+    Navigator.pushReplacement(
       context,
       GameView.route(),
-      (route) => false,
     );
     game.resumeEngine();
   }
 
   void onExit(BuildContext context, TheRunnerGame game) {
-    context.read<AudioController>().changeMusic(Song.background);
     Navigator.pushAndRemoveUntil(
       context,
       MainMenu.route(),

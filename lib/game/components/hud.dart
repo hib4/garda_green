@@ -10,7 +10,8 @@ import 'package:flutter/material.dart' hide Viewport;
 import 'package:garda_green/game/components/input.dart';
 import 'package:garda_green/game/game.dart';
 
-class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
+class Hud extends PositionComponent
+    with ParentIsA<Viewport>, HasGameReference<TheRunnerGame> {
   Hud({
     required Sprite playerSprite,
     required Sprite snowmanSprite,
@@ -40,7 +41,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     textRenderer: TextPaint(
       style: const TextStyle(
         color: Colors.black,
-        fontSize: TheRunnerGame.isMobile ? 8 : 10,
+        fontFamily: 'Press Start 2P',
+        fontSize: TheRunnerGame.isMobile ? 6 : 8,
       ),
     ),
   );
@@ -51,7 +53,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     textRenderer: TextPaint(
       style: const TextStyle(
         color: Colors.black,
-        fontSize: TheRunnerGame.isMobile ? 8 : 10,
+        fontFamily: 'Press Start 2P',
+        fontSize: TheRunnerGame.isMobile ? 6 : 8,
       ),
     ),
   );
@@ -85,8 +88,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
         anchor: Anchor.center,
         position: parent.virtualSize * 0.5,
         knob: CircleComponent(
-          radius: 10,
-          paint: Paint()..color = Colors.green.withOpacity(0.08),
+          radius: 8,
+          paint: Paint()..color = Colors.black.withOpacity(0.08),
         ),
         background: CircleComponent(
           radius: 20,

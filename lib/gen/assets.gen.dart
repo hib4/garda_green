@@ -12,6 +12,14 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/background_menu_desktop.png
+  AssetGenImage get backgroundMenuDesktop =>
+      const AssetGenImage('assets/images/background_menu_desktop.png');
+
+  /// File path: assets/images/background_menu_mobile.png
+  AssetGenImage get backgroundMenuMobile =>
+      const AssetGenImage('assets/images/background_menu_mobile.png');
+
   /// File path: assets/images/pause.png
   AssetGenImage get pause => const AssetGenImage('assets/images/pause.png');
 
@@ -24,7 +32,13 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/tilemap_test.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [pause, tilemapPacked, tilemapTest];
+  List<AssetGenImage> get values => [
+        backgroundMenuDesktop,
+        backgroundMenuMobile,
+        pause,
+        tilemapPacked,
+        tilemapTest
+      ];
 }
 
 class $AssetsLicensesGen {

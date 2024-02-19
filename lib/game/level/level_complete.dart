@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:garda_green/theme/theme.dart';
 
 class LevelComplete extends StatelessWidget {
   const LevelComplete({
@@ -26,7 +27,7 @@ class LevelComplete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(210, 229, 238, 238),
+      backgroundColor: AppColors.overlayBackground,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +36,7 @@ class LevelComplete extends StatelessWidget {
               'Level Completed',
               style: TextStyle(fontSize: 30),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -56,7 +57,7 @@ class LevelComplete extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 16),
             SizedBox(
               width: 150,
               child: OutlinedButton(
@@ -64,7 +65,7 @@ class LevelComplete extends StatelessWidget {
                 child: const Text('Next'),
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 6),
             SizedBox(
               width: 150,
               child: OutlinedButton(
@@ -72,7 +73,7 @@ class LevelComplete extends StatelessWidget {
                 child: const Text('Retry'),
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 6),
             SizedBox(
               width: 150,
               child: OutlinedButton(
