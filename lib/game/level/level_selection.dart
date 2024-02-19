@@ -51,7 +51,7 @@ class LevelSelection extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 100),
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 6),
             NesIconButton(
               icon: NesIcons.thinArrowLeft,
               size: const Size.fromHeight(24),

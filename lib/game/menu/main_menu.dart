@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:garda_green/game/settings/game_settings.dart';
 import 'package:garda_green/game/view/game_view.dart';
+import 'package:garda_green/gen/assets.gen.dart';
+import 'package:garda_green/theme/app_colors.dart';
+import 'package:garda_green/utils/components/components.dart';
+import 'package:garda_green/utils/utils.dart';
 import 'package:nes_ui/nes_ui.dart';
 
 class MainMenu extends StatefulWidget {
@@ -19,76 +23,62 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  final ValueNotifier<int> _isHovered = ValueNotifier(0);
-
-  @override
-  void dispose() {
-    _isHovered.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const Spacer(),
-            const Text(
-              'Global Gamers',
-              style: TextStyle(
-                fontSize: 32,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const Spacer(flex: 3),
-            NesPressable(
-              onPress: () {
-                Navigator.push(context, GameView.route());
-              },
-              onPressStart: () {
-                _isHovered.value = 1;
-              },
-              onPressEnd: () {
-                _isHovered.value = 0;
-              },
-              child: ValueListenableBuilder(
-                valueListenable: _isHovered,
-                builder: (context, value, child) {
-                  return Text(
-                    'Play',
-                    style: TextStyle(
-                      color: value == 1 ? Colors.green : Colors.black,
-                      fontSize: 24,
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            filterQuality: FilterQuality.high,
+            image: context.isSmall
+                ? Assets.images.backgroundMenuMobile.provider()
+                : Assets.images.backgroundMenuDesktop.provider(),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              const Spacer(flex: 2),
+              Stack(
+                children: [
+                  NesRunningText(
+                    text: 'Garda Green',
+                    textStyle: TextStyle(
+                      fontSize: 32,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 3
+                        ..color = Colors.white,
                     ),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
-            NesPressable(
-              onPress: () => Navigator.push(context, GameSettings.route()),
-              onPressStart: () {
-                _isHovered.value = 2;
-              },
-              onPressEnd: () {
-                _isHovered.value = 0;
-              },
-              child: ValueListenableBuilder(
-                valueListenable: _isHovered,
-                builder: (context, value, child) {
-                  return Text(
-                    'Settings',
-                    style: TextStyle(
-                      color: value == 2 ? Colors.green : Colors.black,
-                      fontSize: 24,
+                  ),
+                  const NesRunningText(
+                    text: 'Garda Green',
+                    textStyle: TextStyle(
+                      color: AppColors.green,
+                      fontSize: 32,
                     ),
-                  );
-                },
+                  ),
+                ],
               ),
-            ),
-            const Spacer(flex: 2),
-          ],
+              Spacer(flex: context.isSmall ? 5 : 8),
+              WobblyButton(
+                type: NesButtonType.success,
+                onPressed: () {
+                  Navigator.push(context, GameView.route());
+                },
+                child: const Text('Play'),
+              ),
+              const SizedBox(height: 16),
+              WobblyButton(
+                onPressed: () {
+                  Navigator.push(context, GameSettings.route());
+                },
+                child: const Text('Settings'),
+              ),
+              const Spacer(flex: 2),
+            ],
+          ),
         ),
       ),
     );

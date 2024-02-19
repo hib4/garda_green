@@ -85,6 +85,7 @@ class Player extends PositionComponent
   double jump() {
     game.audioController.playSfx(Sfx.jump);
     _isOnGround = false;
+
     final jumpFactor = _speed / _maxSpeed;
     final jumpScale = lerpDouble(1.0, 1.2, jumpFactor)!;
     final jumpDuration = lerpDouble(0.0, 0.8, jumpFactor)!;
