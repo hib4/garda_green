@@ -8,7 +8,6 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart' hide OverlayRoute, Route;
 import 'package:garda_green/audio/audio.dart';
@@ -16,14 +15,15 @@ import 'package:garda_green/game/components/components.dart';
 import 'package:garda_green/game/entities/entities.dart';
 import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/settings/settings.dart';
-import 'package:garda_green/theme/theme.dart';
 
 class TheRunnerGame extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
   TheRunnerGame({
     required this.audioController,
     required this.settingsController,
-    required this.mediaQuery,
+    required this.aspectRatio,
+    required this.isMobile,
+    required this.top,
     super.children,
     super.world,
     super.camera,
@@ -31,7 +31,9 @@ class TheRunnerGame extends FlameGame
 
   final AudioController audioController;
   final SettingsController settingsController;
-  final MediaQueryData mediaQuery;
+  final double aspectRatio;
+  final bool isMobile;
+  final double top;
 
   static const id = 'game_view';
   static const _timeScaleRate = 1.0;
@@ -43,8 +45,6 @@ class TheRunnerGame extends FlameGame
     'level_2.tmx',
     'level_3.tmx',
   ];
-
-  static const isMobile = true;
 
   late final input = Input(
     keyCallbacks: {
@@ -108,8 +108,8 @@ class TheRunnerGame extends FlameGame
     _hud = Hud(
       playerSprite: _spriteSheet.getSprite(5, 10),
       snowmanSprite: _spriteSheet.getSprite(5, 9),
-      input: TheRunnerGame.isMobile ? input : null,
-      onPausePressed: TheRunnerGame.isMobile ? _onGamePaused : null,
+      input: isMobile ? input : null,
+      onPausePressed: isMobile ? _onGamePaused : null,
     );
 
     await _camera.viewport.addAll([_fader, _hud]);
@@ -202,9 +202,8 @@ class TheRunnerGame extends FlameGame
   }
 
   Future<void> _setupCamera() async {
-    final aspectRatio = mediaQuery.size.aspectRatio;
-    const height = TheRunnerGame.isMobile ? 200.0 : 180.0;
-    final width = TheRunnerGame.isMobile ? height * aspectRatio : 320.0;
+    final height = isMobile ? 200.0 : 180.0;
+    final width = isMobile ? height * aspectRatio : 320.0;
 
     _camera = CameraComponent.withFixedResolution(
       width: width,

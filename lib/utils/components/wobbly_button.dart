@@ -49,7 +49,7 @@ class _WobblyButtonState extends State<WobblyButton>
           child: DefaultTextStyle(
             style: Theme.of(context).textTheme.bodyMedium ?? const TextStyle(),
             child: Center(
-              widthFactor: 1.0,
+              widthFactor: 1,
               child: widget.child,
             ),
           ),
