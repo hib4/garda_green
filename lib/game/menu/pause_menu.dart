@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:garda_green/l10n/l10n.dart';
 import 'package:garda_green/theme/app_colors.dart';
 import 'package:garda_green/utils/components/components.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -25,22 +26,23 @@ class PauseMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: AppColors.overlayBackground,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Paused',
-              style: TextStyle(fontSize: 30),
+            Text(
+              l10n.pausedLabel,
+              style: const TextStyle(fontSize: 30),
             ),
             const SizedBox(height: 24),
             SizedBox(
               width: 150,
               child: WobblyButton(
                 onPressed: onResumePressed,
-                child: const Text('Resume'),
+                child: Text(l10n.resumeLabel),
               ),
             ),
             const SizedBox(height: 16),
@@ -49,7 +51,7 @@ class PauseMenu extends StatelessWidget {
               child: WobblyButton(
                 type: NesButtonType.warning,
                 onPressed: onRestartPressed,
-                child: const Text('Restart'),
+                child: Text(l10n.restartLabel),
               ),
             ),
             const SizedBox(height: 16),
@@ -58,7 +60,7 @@ class PauseMenu extends StatelessWidget {
               child: WobblyButton(
                 type: NesButtonType.error,
                 onPressed: onExitPressed,
-                child: const Text('Exit'),
+                child: Text(l10n.exitLabel),
               ),
             ),
           ],
