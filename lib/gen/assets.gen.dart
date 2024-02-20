@@ -93,6 +93,19 @@ class $AssetsTilesGen {
   List<String> get values => [level1, level2, level3];
 }
 
+class $AssetsTriviaGen {
+  const $AssetsTriviaGen();
+
+  /// File path: assets/trivia/trivia_en.json
+  String get triviaEn => 'assets/trivia/trivia_en.json';
+
+  /// File path: assets/trivia/trivia_id.json
+  String get triviaId => 'assets/trivia/trivia_id.json';
+
+  /// List of all assets
+  List<String> get values => [triviaEn, triviaId];
+}
+
 class $AssetsLicensesPressStart2pGen {
   const $AssetsLicensesPressStart2pGen();
 
@@ -111,6 +124,7 @@ class Assets {
   static const $AssetsMusicGen music = $AssetsMusicGen();
   static const $AssetsSfxGen sfx = $AssetsSfxGen();
   static const $AssetsTilesGen tiles = $AssetsTilesGen();
+  static const $AssetsTriviaGen trivia = $AssetsTriviaGen();
 }
 
 class AssetGenImage {
