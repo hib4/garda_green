@@ -27,7 +27,9 @@ class GameView extends StatelessWidget {
       game: TheRunnerGame(
         audioController: context.read<AudioController>(),
         settingsController: context.read<SettingsController>(),
-        mediaQuery: MediaQuery.of(context),
+        aspectRatio: MediaQuery.of(context).size.aspectRatio,
+        isMobile: context.isSmall,
+        top: MediaQuery.of(context).viewPadding.top,
       ),
       overlayBuilderMap: {
         PauseMenu.id: (context, game) {
