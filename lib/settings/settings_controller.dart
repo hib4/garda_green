@@ -15,9 +15,9 @@ class SettingsController {
       : _persistence = persistence;
   final SettingsPersistence _persistence;
 
-  ValueNotifier<bool> musicMuted = ValueNotifier(true);
+  ValueNotifier<bool> musicMuted = ValueNotifier(false);
 
-  ValueNotifier<bool> sfxMuted = ValueNotifier(true);
+  ValueNotifier<bool> sfxMuted = ValueNotifier(false);
 
   /// Asynchronously loads values from the injected persistence store.
   Future<void> loadStateFromPersistence() async {

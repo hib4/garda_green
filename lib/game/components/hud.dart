@@ -13,66 +13,57 @@ import 'package:garda_green/game/game.dart';
 class Hud extends PositionComponent
     with ParentIsA<Viewport>, HasGameReference<TheRunnerGame> {
   Hud({
-    required this.playerSprite,
-    required this.snowmanSprite,
+    required Sprite playerSprite,
+    required Sprite snowmanSprite,
     this.input,
     this.onPausePressed,
-  });
+  })  : _player = SpriteComponent(
+          sprite: playerSprite,
+          anchor: Anchor.center,
+          scale: Vector2.all(TheRunnerGame.isMobile ? 0.6 : 1.0),
+        ),
+        _snowman = SpriteComponent(
+          sprite: snowmanSprite,
+          anchor: Anchor.center,
+          scale: Vector2.all(TheRunnerGame.isMobile ? 0.6 : 1.0),
+        );
 
-  final Sprite playerSprite;
-  final Sprite snowmanSprite;
-  final VoidCallback? onPausePressed;
-
-  late final SpriteComponent _player;
-  late final SpriteComponent _snowman;
+  final SpriteComponent _player;
+  final SpriteComponent _snowman;
 
   late final JoystickComponent? _joystick;
   final Input? input;
+  final VoidCallback? onPausePressed;
 
-  late final TextComponent _life;
-  late final TextComponent _score;
+  final _life = TextComponent(
+    text: 'x3',
+    anchor: Anchor.centerLeft,
+    textRenderer: TextPaint(
+      style: const TextStyle(
+        color: Colors.black,
+        fontFamily: 'Press Start 2P',
+        fontSize: TheRunnerGame.isMobile ? 6 : 8,
+      ),
+    ),
+  );
+
+  final _score = TextComponent(
+    text: 'x0',
+    anchor: Anchor.centerLeft,
+    textRenderer: TextPaint(
+      style: const TextStyle(
+        color: Colors.black,
+        fontFamily: 'Press Start 2P',
+        fontSize: TheRunnerGame.isMobile ? 6 : 8,
+      ),
+    ),
+  );
 
   @override
   FutureOr<void> onLoad() async {
-    _life = TextComponent(
-      text: 'x3',
-      anchor: Anchor.centerLeft,
-      textRenderer: TextPaint(
-        style: TextStyle(
-          color: Colors.black,
-          fontFamily: 'Press Start 2P',
-          fontSize: game.isMobile ? 6 : 8,
-        ),
-      ),
-    );
-
-    _score = TextComponent(
-      text: 'x0',
-      anchor: Anchor.centerLeft,
-      textRenderer: TextPaint(
-        style: TextStyle(
-          color: Colors.black,
-          fontFamily: 'Press Start 2P',
-          fontSize: game.isMobile ? 6 : 8,
-        ),
-      ),
-    );
-
-    _player = SpriteComponent(
-      sprite: playerSprite,
-      anchor: Anchor.center,
-      scale: Vector2.all(game.isOffTrail ? 0.6 : 1.0),
-    );
-
-    _snowman = SpriteComponent(
-      sprite: snowmanSprite,
-      anchor: Anchor.center,
-      scale: Vector2.all(game.isOffTrail ? 0.6 : 1.0),
-    );
-
     _player.position.setValues(
       16,
-      game.isMobile ? 10 : parent.virtualSize.y - 20,
+      TheRunnerGame.isMobile ? 10 : parent.virtualSize.y - 20,
     );
 
     _life.position.setValues(
@@ -92,7 +83,7 @@ class Hud extends PositionComponent
 
     await addAll([_player, _life, _snowman, _score]);
 
-    if (game.isMobile) {
+    if (TheRunnerGame.isMobile) {
       _joystick = JoystickComponent(
         anchor: Anchor.center,
         position: parent.virtualSize * 0.5,

@@ -9,7 +9,6 @@ import 'package:garda_green/bootstrap.dart';
 import 'package:garda_green/firebase_options_production.dart';
 import 'package:garda_green/settings/persistence/persistence.dart';
 import 'package:garda_green/settings/settings.dart';
-import 'package:garda_green/trivia/repository/trivia_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,14 +27,11 @@ void main() async {
   final audio = AudioController()..attachSettings(settings);
   await audio.initialize();
 
-  final triviaRepository = TriviaRepository();
-
   unawaited(
     bootstrap(
       () => App(
         audioController: audio,
         settingsController: settings,
-        triviaRepository: triviaRepository,
       ),
     ),
   );
