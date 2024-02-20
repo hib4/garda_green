@@ -4,8 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:garda_green/game/game.dart';
 
-class Input extends Component
-    with KeyboardHandler, HasGameReference<TheRunnerGame> {
+class Input extends Component with KeyboardHandler, HasGameReference {
   Input({Map<LogicalKeyboardKey, VoidCallback>? keyCallbacks})
       : _keyCallbacks = keyCallbacks ?? <LogicalKeyboardKey, VoidCallback>{};
 
@@ -25,7 +24,7 @@ class Input extends Component
 
   @override
   void update(double dt) {
-    if (!game.isMobile) {
+    if (!TheRunnerGame.isMobile) {
       _leftInput = lerpDouble(
         _leftInput,
         (_isLeftKeyPressed && active) ? maxHAxis : 0,
@@ -44,7 +43,7 @@ class Input extends Component
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if (!game.isMobile && !game.paused) {
+    if (!TheRunnerGame.isMobile && !game.paused) {
       _isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyA) ||
           keysPressed.contains(LogicalKeyboardKey.arrowLeft);
       _isRightKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyD) ||
