@@ -21,11 +21,12 @@ class Player extends PositionComponent
   late final SpriteComponent _body;
   final _moveDirection = Vector2(0, 1);
 
-  late final _trailParticlePaint = Paint()..color = game.backgroundColor();
+  late final _trailParticlePaint = Paint()
+    ..color = const Color(0XFFFFFFFF).withOpacity(0.7);
   late final _offsetLeft = Vector2(-_body.width * 0.25, 0);
   late final _offsetRight = Vector2(_body.width * 0.25, 0);
 
-  var _speed = 0.0;
+  var speed = 0.0;
   static const _maxSpeed = 100.0;
   static const _acceleration = 0.5;
 
@@ -50,10 +51,10 @@ class Player extends PositionComponent
       ..x = ancestor.input.hAxis
       ..y = 1
       ..normalize();
-    _speed = lerpDouble(_speed, _maxSpeed, _acceleration * dt)!;
+    speed = lerpDouble(speed, _maxSpeed, _acceleration * dt)!;
 
     angle = _moveDirection.screenAngle() + pi;
-    position.addScaled(_moveDirection, _speed * dt);
+    position.addScaled(_moveDirection, speed * dt);
 
     if (_isOnGround && !game.isOffTrail) {
       parent?.add(
@@ -77,16 +78,15 @@ class Player extends PositionComponent
   }
 
   void resetTo(Vector2 resetPosition) {
-    game.audioController.playSfx(Sfx.hurt);
     position.setFrom(resetPosition);
-    _speed += 0.5;
+    speed += 0.5;
   }
 
   double jump() {
     game.audioController.playSfx(Sfx.jump);
     _isOnGround = false;
 
-    final jumpFactor = _speed / _maxSpeed;
+    final jumpFactor = speed / _maxSpeed;
     final jumpScale = lerpDouble(1.0, 1.2, jumpFactor)!;
     final jumpDuration = lerpDouble(0.0, 0.8, jumpFactor)!;
 

@@ -5,14 +5,17 @@ import 'package:nes_ui/nes_ui.dart';
 class GareenDialog extends StatelessWidget {
   const GareenDialog({
     required this.child,
+    this.isShowCloseButton = true,
     super.key,
   });
 
   final Widget child;
+  final bool isShowCloseButton;
 
   static Future<T?> show<T>({
     required BuildContext context,
     required WidgetBuilder builder,
+    bool isShowCloseButton = true,
   }) {
     final nesTheme = context.nesThemeExtension<NesTheme>();
     return showGeneralDialog<T>(
@@ -30,6 +33,7 @@ class GareenDialog extends StatelessWidget {
         );
       },
       pageBuilder: (_, __, ___) => GareenDialog(
+        isShowCloseButton: isShowCloseButton,
         child: builder(context),
       ),
     );
@@ -46,7 +50,7 @@ class GareenDialog extends StatelessWidget {
       child: Align(
         child: Material(
           child: IntrinsicWidth(
-            stepHeight: 0.56,
+             stepHeight: 0.56,
             child: SizedBox.expand(
               child: Stack(
                 clipBehavior: Clip.none,
@@ -59,17 +63,20 @@ class GareenDialog extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    right: -8,
-                    top: -8,
-                    child: NesButton(
-                      type: NesButtonType.error,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: NesIcon(
-                        size: const Size(16, 16),
-                        iconData: NesIcons.close,
+                  Visibility(
+                    visible: isShowCloseButton,
+                    child: Positioned(
+                      right: -8,
+                      top: -8,
+                      child: NesButton(
+                        type: NesButtonType.error,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: NesIcon(
+                          size: const Size(16, 16),
+                          iconData: NesIcons.close,
+                        ),
                       ),
                     ),
                   ),

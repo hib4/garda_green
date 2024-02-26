@@ -1,2 +1,3 @@
 export 'player.dart';
-export 'snowman.dart';
+export 'star.dart';
+export 'trash.dart';
