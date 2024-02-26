@@ -14,17 +14,17 @@ class Hud extends PositionComponent
     with ParentIsA<Viewport>, HasGameReference<TheRunnerGame> {
   Hud({
     required this.playerSprite,
-    required this.snowmanSprite,
+    required this.starSprite,
     this.input,
     this.onPausePressed,
   });
 
   final Sprite playerSprite;
-  final Sprite snowmanSprite;
+  final Sprite starSprite;
   final VoidCallback? onPausePressed;
 
   late final SpriteComponent _player;
-  late final SpriteComponent _snowman;
+  late final SpriteComponent _star;
 
   late final JoystickComponent? _joystick;
   final Input? input;
@@ -64,8 +64,8 @@ class Hud extends PositionComponent
       scale: Vector2.all(game.isOffTrail ? 0.6 : 1.0),
     );
 
-    _snowman = SpriteComponent(
-      sprite: snowmanSprite,
+    _star = SpriteComponent(
+      sprite: starSprite,
       anchor: Anchor.center,
       scale: Vector2.all(game.isOffTrail ? 0.6 : 1.0),
     );
@@ -80,17 +80,17 @@ class Hud extends PositionComponent
       _player.position.y,
     );
 
-    _snowman.position.setValues(
+    _star.position.setValues(
       parent.virtualSize.x - 35,
       _player.y,
     );
 
     _score.position.setValues(
-      _snowman.position.x + 8,
-      _snowman.position.y,
+      _star.position.x + 8,
+      _star.position.y,
     );
 
-    await addAll([_player, _life, _snowman, _score]);
+    await addAll([_player, _life, _star, _score]);
 
     if (game.isMobile) {
       _joystick = JoystickComponent(
@@ -139,10 +139,10 @@ class Hud extends PositionComponent
     super.update(dt);
   }
 
-  void updateSnowmanCollected(int count) {
+  void updateStarCollected(int count) {
     _score.text = 'x$count';
 
-    _snowman.add(
+    _star.add(
       RotateEffect.by(
         pi / 8,
         RepeatedEffectController(

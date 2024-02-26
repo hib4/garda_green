@@ -20,25 +20,16 @@ class $AssetsImagesGen {
   AssetGenImage get backgroundMenuMobile =>
       const AssetGenImage('assets/images/background_menu_mobile.png');
 
+  /// File path: assets/images/garda_green_tilemap.png
+  AssetGenImage get gardaGreenTilemap =>
+      const AssetGenImage('assets/images/garda_green_tilemap.png');
+
   /// File path: assets/images/pause.png
   AssetGenImage get pause => const AssetGenImage('assets/images/pause.png');
 
-  /// File path: assets/images/tilemap_packed.png
-  AssetGenImage get tilemapPacked =>
-      const AssetGenImage('assets/images/tilemap_packed.png');
-
-  /// File path: assets/images/tilemap_test.png
-  AssetGenImage get tilemapTest =>
-      const AssetGenImage('assets/images/tilemap_test.png');
-
   /// List of all assets
-  List<AssetGenImage> get values => [
-        backgroundMenuDesktop,
-        backgroundMenuMobile,
-        pause,
-        tilemapPacked,
-        tilemapTest
-      ];
+  List<AssetGenImage> get values =>
+      [backgroundMenuDesktop, backgroundMenuMobile, gardaGreenTilemap, pause];
 }
 
 class $AssetsLicensesGen {
@@ -51,8 +42,8 @@ class $AssetsLicensesGen {
 class $AssetsMusicGen {
   const $AssetsMusicGen();
 
-  /// File path: assets/music/background.wav
-  String get background => 'assets/music/background.wav';
+  /// File path: assets/music/background.mp3
+  String get background => 'assets/music/background.mp3';
 
   /// File path: assets/music/gameplay.mp3
   String get gameplay => 'assets/music/gameplay.mp3';
@@ -67,6 +58,9 @@ class $AssetsSfxGen {
   /// File path: assets/sfx/collect.wav
   String get collect => 'assets/sfx/collect.wav';
 
+  /// File path: assets/sfx/hit.wav
+  String get hit => 'assets/sfx/hit.wav';
+
   /// File path: assets/sfx/hurt.wav
   String get hurt => 'assets/sfx/hurt.wav';
 
@@ -74,7 +68,7 @@ class $AssetsSfxGen {
   String get jump => 'assets/sfx/jump.wav';
 
   /// List of all assets
-  List<String> get values => [collect, hurt, jump];
+  List<String> get values => [collect, hit, hurt, jump];
 }
 
 class $AssetsTilesGen {

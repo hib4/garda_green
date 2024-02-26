@@ -52,6 +52,10 @@
   "@downloadMessage": {
     "description": "Text for the download message"
   },
+  "submitScoreLabel": "Submit score",
+  "@submitScoreLabel": {
+    "description": "Text for the submit score label"
+  },
   "gameScoreLabel": "{points} Pts",
   "@gameScoreLabel": {
     "description": "Text shown on the game score label",

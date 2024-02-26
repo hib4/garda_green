@@ -52,6 +52,10 @@
   "@downloadMessage": {
     "description": "Teks untuk pesan unduh"
   },
+  "submitScoreLabel": "Kirim skor",
+  "@submitScoreLabel": {
+    "description": "Text for the submit score label"
+  },
   "gameScoreLabel": "{points} Pts",
   "@gameScoreLabel": {
     "description": "Teks ditampilkan pada label skor permainan",

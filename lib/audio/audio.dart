@@ -17,17 +17,19 @@ enum Song {
 
 enum Sfx {
   collect,
+  hit,
   hurt,
   jump,
 }
 
 const songs = {
-  Song.background: 'music/background.wav',
+  Song.background: 'music/background.mp3',
   Song.gameplay: 'music/gameplay.mp3',
 };
 
 const sfx = <Sfx, String>{
   Sfx.collect: 'sfx/collect.wav',
+  Sfx.hit: 'sfx/hit.wav',
   Sfx.hurt: 'sfx/hurt.wav',
   Sfx.jump: 'sfx/jump.wav',
 };
@@ -189,7 +191,7 @@ class AudioController {
     _log.i('Playing $playingSong now.');
     await musicPlayer.play(
       AssetSource('$playingSong'),
-      volume: 0.3,
+      volume: 0.5,
     );
     await musicPlayer.setReleaseMode(ReleaseMode.loop);
   }

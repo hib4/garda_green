@@ -13,8 +13,10 @@ import 'package:flutter/widgets.dart' hide OverlayRoute, Route;
 import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/components/components.dart';
 import 'package:garda_green/game/entities/entities.dart';
-import 'package:garda_green/game/menu/menu.dart';
+import 'package:garda_green/game/pause/pause.dart';
+import 'package:garda_green/game/score/score.dart';
 import 'package:garda_green/settings/settings.dart';
+import 'package:garda_green/theme/theme.dart';
 
 class TheRunnerGame extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
@@ -38,8 +40,8 @@ class TheRunnerGame extends FlameGame
   static const id = 'game_view';
   static const _timeScaleRate = 1.0;
   static const _bgmFadeRate = 1.0;
-  static const _bgmMinVol = 0.0;
-  static const _bgmMaxVol = 0.4;
+  static const _bgmMinVol = 0.1;
+  static const _bgmMaxVol = 0.5;
   static const _sections = [
     'level_1.tmx',
     'level_2.tmx',
@@ -74,10 +76,13 @@ class TheRunnerGame extends FlameGame
   late Hud _hud;
   late TiledComponent<FlameGame<World>> map;
 
+  int _totalSections = 1;
   int _currentSection = 0;
   int _nTrailTriggers = 0;
-  int _nSnowmanCollected = 0;
+  int _nStarCollected = 0;
   int _nLives = 3;
+
+  int get score => _nStarCollected * (_totalSections * 10);
 
   bool get isOffTrail => _nTrailTriggers == 0;
 
@@ -85,7 +90,7 @@ class TheRunnerGame extends FlameGame
   bool _isGameOver = false;
 
   @override
-  Color backgroundColor() => const Color(0xFFEFF8FE);
+  Color backgroundColor() => AppColors.background;
 
   @override
   FutureOr<void> onLoad() async {
@@ -106,8 +111,8 @@ class TheRunnerGame extends FlameGame
     );
 
     _hud = Hud(
-      playerSprite: _spriteSheet.getSprite(5, 10),
-      snowmanSprite: _spriteSheet.getSprite(5, 9),
+      playerSprite: _spriteSheet.getSprite(0, 6),
+      starSprite: _spriteSheet.getSprite(1, 6),
       input: isMobile ? input : null,
       onPausePressed: isMobile ? _onGamePaused : null,
     );
@@ -151,7 +156,7 @@ class TheRunnerGame extends FlameGame
       }
     }
 
-    if (_isLevelCompleted) {
+    if (_isGameOver) {
       if (audioController.musicPlayer.volume > _bgmMinVol) {
         audioController.musicPlayer.setVolume(
           lerpDouble(
@@ -175,20 +180,13 @@ class TheRunnerGame extends FlameGame
     super.update(dt);
   }
 
-  @override
-  Future<void> onRemove() async {
-    await audioController.changeMusic(Song.background);
-    await audioController.musicPlayer.setVolume(0.3);
-    super.onRemove();
-  }
-
   Future<void> _setupWorld() async {
     map = await TiledComponent.load(
       _sections[_currentSection],
       Vector2.all(16),
     );
 
-    final tiles = images.fromCache('../images/tilemap_packed.png');
+    final tiles = images.fromCache('../images/garda_green_tilemap.png');
     _spriteSheet = SpriteSheet(
       image: tiles,
       srcSize: Vector2.all(16),
@@ -226,17 +224,24 @@ class TheRunnerGame extends FlameGame
             _player = Player(
               position: Vector2(object.x, object.y),
               priority: 1,
-              sprite: _spriteSheet.getSprite(5, 10),
+              sprite: _spriteSheet.getSprite(0, 6),
             );
             await _world.add(_player);
             _lastSafePosition = Vector2(object.x, object.y);
-          case 'Snowman':
-            final snowman = Snowman(
+          case 'Star':
+            final star = Star(
               position: Vector2(object.x, object.y),
-              sprite: _spriteSheet.getSprite(5, 9),
-              onCollected: _onSnowmanCollected,
+              sprite: _spriteSheet.getSprite(1, 6),
+              onCollected: _onStarCollected,
             );
-            await _world.add(snowman);
+            await _world.add(star);
+          case 'Trash':
+            final trash = Trash(
+              position: Vector2(object.x, object.y),
+              sprite: _spriteSheet.getSprite(7, 0),
+              onHit: _onHit,
+            );
+            await _world.add(trash);
         }
       }
     }
@@ -311,7 +316,7 @@ class TheRunnerGame extends FlameGame
   }
 
   void _onGamePaused() {
-    overlays.add(PauseMenu.id);
+    overlays.add(PausePage.id);
     pauseEngine();
   }
 
@@ -327,11 +332,12 @@ class TheRunnerGame extends FlameGame
     --_nLives;
     _hud.updateLifeCount(_nLives);
     if (_nLives > 0) {
+      audioController.playSfx(Sfx.hurt);
       _player.resetTo(_lastSafePosition);
     } else {
       _isGameOver = true;
       _fader.add(OpacityEffect.fadeIn(LinearEffectController(1)));
-      overlays.add(GameOverMenu.id);
+      overlays.add(ScorePage.id);
     }
   }
 
@@ -367,6 +373,7 @@ class TheRunnerGame extends FlameGame
     input.active = false;
     _isLevelCompleted = true;
     _currentSection = (_currentSection + 1) % _sections.length;
+    _totalSections++;
     _startNextLevel();
   }
 
@@ -377,7 +384,8 @@ class TheRunnerGame extends FlameGame
       (component) =>
           component is TiledComponent ||
           component is Player ||
-          component is Snowman,
+          component is Star ||
+          component is Trash,
     );
 
     map = await TiledComponent.load(
@@ -402,8 +410,21 @@ class TheRunnerGame extends FlameGame
     _fader.add(OpacityEffect.fadeOut(LinearEffectController(1)));
   }
 
-  void _onSnowmanCollected() {
-    ++_nSnowmanCollected;
-    _hud.updateSnowmanCollected(_nSnowmanCollected);
+  void _onStarCollected() {
+    ++_nStarCollected;
+    _hud.updateStarCollected(_nStarCollected);
+  }
+
+  void _onHit() {
+    --_nLives;
+    _hud.updateLifeCount(_nLives);
+    audioController.playSfx(Sfx.hit);
+    if (_nLives < 1) {
+      _isGameOver = true;
+      _fader.add(OpacityEffect.fadeIn(LinearEffectController(1)));
+      overlays.add(ScorePage.id);
+    } else {
+      _player.speed *= 0.5;
+    }
   }
 }
