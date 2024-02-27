@@ -7,6 +7,7 @@ import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/l10n/l10n.dart';
 import 'package:garda_green/leaderboard/leaderboard.dart';
 import 'package:garda_green/settings/settings.dart';
+import 'package:garda_green/theme/app_colors.dart';
 import 'package:garda_green/trivia/trivia.dart';
 import 'package:nes_ui/nes_ui.dart';
 
@@ -54,7 +55,9 @@ class App extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-          theme: flutterNesTheme(),
+          theme: flutterNesTheme(
+            primaryColor: AppColors.primary,
+          ),
           title: 'Garda Green',
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: AppLocalizations.localizationsDelegates,

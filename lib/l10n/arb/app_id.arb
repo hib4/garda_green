@@ -64,5 +64,38 @@
         "type": "int"
       }
     }
+  },
+  "enterLabel": "Masukkan",
+  "@enterLabel": {
+    "description": "Teks untuk label masukkan"
+  },
+  "enterInitialsLabel": "Masukkan inisial Anda untuk papan peringkat",
+  "@enterInitialsLabel": {
+    "description": "Teks ditampilkan pada label input skor"
+  },
+  "enterInitialsMessage": "(Jangan pernah masukkan inisial asli Anda di sini)",
+  "@enterInitialsMessage": {
+    "description": "Teks ditampilkan pada pesan input skor"
+  },
+
+  "initialsBlacklistedMessage": "Tolong gunakan inisial yang sesuai",
+  "@initialsBlacklistedMessage": {
+    "description": "Teks ditampilkan pada pesan input skor ketika inisial yang digunakan adalah inisial yang dilarang"
+  },
+  "initialsInvalidMessage": "Silakan masukkan tiga inisial",
+  "@initialsInvalidMessage": {
+    "description": "Teks ditampilkan pada pesan input skor ketika inisial yang digunakan adalah inisial yang tidak valid"
+  },
+  "playAgainLabel": "Main lagi",
+  "@playAgainLabel": {
+    "description": "Teks untuk label main lagi"
+  },
+  "errorInputScoreMessage": "Ups! Ada yang tidak beres",
+  "@errorInputScoreMessage": {
+    "description": "Teks untuk pesan error input skor"
+  },
+  "youScoredMessage": "Wohoo!\nKamu mendapat skor!",
+  "@youScoredMessage": {
+    "description": "Teks untuk pesan mendapatkan skor"
   }
 }

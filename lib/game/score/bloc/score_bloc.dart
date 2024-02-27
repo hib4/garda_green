@@ -86,4 +86,6 @@ const _blacklist = [
   'SEX',
   'TIT',
   'WTF',
+  'XXX',
+  'RIP',
 ];

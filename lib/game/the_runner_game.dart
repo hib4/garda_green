@@ -24,8 +24,9 @@ class TheRunnerGame extends FlameGame
     required this.audioController,
     required this.settingsController,
     required this.aspectRatio,
-    required this.isMobile,
     required this.top,
+    required this.isMobile,
+    this.playMusic = false,
     super.children,
     super.world,
     super.camera,
@@ -34,8 +35,9 @@ class TheRunnerGame extends FlameGame
   final AudioController audioController;
   final SettingsController settingsController;
   final double aspectRatio;
-  final bool isMobile;
   final double top;
+  final bool isMobile;
+  final bool playMusic;
 
   static const id = 'game_view';
   static const _timeScaleRate = 1.0;
@@ -89,8 +91,10 @@ class TheRunnerGame extends FlameGame
   bool _isLevelCompleted = false;
   bool _isGameOver = false;
 
+  bool get isGameOver => _isGameOver;
+
   @override
-  Color backgroundColor() => AppColors.background;
+  Color backgroundColor() => AppColors.primary;
 
   @override
   FutureOr<void> onLoad() async {
@@ -122,9 +126,10 @@ class TheRunnerGame extends FlameGame
     await _camera.viewfinder.add(_cameraShake);
     _cameraShake.pause();
 
-    await audioController.changeMusic(Song.gameplay);
-
-    await audioController.musicPlayer.setVolume(0);
+    if (playMusic) {
+      await audioController.changeMusic(Song.gameplay);
+      await audioController.musicPlayer.setVolume(0);
+    }
 
     return super.onLoad();
   }
@@ -328,16 +333,19 @@ class TheRunnerGame extends FlameGame
     --_nTrailTriggers;
   }
 
-  void _resetPlayer() {
+  Future<void> _resetPlayer() async {
     --_nLives;
     _hud.updateLifeCount(_nLives);
+    await audioController.playSfx(Sfx.hurt);
     if (_nLives > 0) {
-      audioController.playSfx(Sfx.hurt);
       _player.resetTo(_lastSafePosition);
     } else {
       _isGameOver = true;
       _fader.add(OpacityEffect.fadeIn(LinearEffectController(1)));
-      overlays.add(ScorePage.id);
+      await Future<void>.delayed(
+        const Duration(seconds: 1),
+        () => overlays.add(ScorePage.id),
+      );
     }
   }
 
@@ -415,14 +423,20 @@ class TheRunnerGame extends FlameGame
     _hud.updateStarCollected(_nStarCollected);
   }
 
-  void _onHit() {
+  Future<void> _onHit() async {
     --_nLives;
     _hud.updateLifeCount(_nLives);
-    audioController.playSfx(Sfx.hit);
+    await audioController.playSfx(Sfx.hit);
     if (_nLives < 1) {
       _isGameOver = true;
       _fader.add(OpacityEffect.fadeIn(LinearEffectController(1)));
-      overlays.add(ScorePage.id);
+      await Future<void>.delayed(
+        const Duration(seconds: 1),
+        () {
+          pauseEngine();
+          overlays.add(ScorePage.id);
+        },
+      );
     } else {
       _player.speed *= 0.5;
     }

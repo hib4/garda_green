@@ -5,7 +5,6 @@ import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/game/score/input_initials/view/input_initials_page.dart';
 import 'package:garda_green/game/view/view.dart';
 import 'package:garda_green/l10n/l10n.dart';
-import 'package:garda_green/theme/theme.dart';
 import 'package:garda_green/trivia/trivia.dart';
 import 'package:garda_green/utils/components/components.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -49,7 +48,6 @@ class _GameOverPageState extends State<GameOverPage> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      backgroundColor: AppColors.overlayBackground,
       body: PopScope(
         onPopInvoked: (_) {
           context.read<AudioController>().musicPlayer.setVolume(0.5);

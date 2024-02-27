@@ -26,7 +26,7 @@ class Player extends PositionComponent
   late final _offsetLeft = Vector2(-_body.width * 0.25, 0);
   late final _offsetRight = Vector2(_body.width * 0.25, 0);
 
-  var speed = 0.0;
+  double speed = 0;
   static const _maxSpeed = 100.0;
   static const _acceleration = 0.5;
 

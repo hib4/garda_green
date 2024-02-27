@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
-import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/entities/entities.dart';
 import 'package:garda_green/game/game.dart';
 
