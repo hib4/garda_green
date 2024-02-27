@@ -64,5 +64,37 @@
         "type": "int"
       }
     }
+  },
+  "enterLabel": "Enter",
+  "@enterLabel": {
+    "description": "Text for the enter label"
+  },
+  "enterInitialsLabel": "Enter your initials for\nthe leaderboard",
+  "@enterInitialsLabel": {
+    "description": "Text shown on the input score"
+  },
+  "enterInitialsMessage": "(Never put your real initials here)",
+  "@enterInitialsMessage": {
+    "description": "Text shown on the message of input score"
+  },
+  "initialsBlacklistedMessage": "Please use appropriate initials",
+  "@initialsBlacklistedMessage": {
+    "description": "Text shown on the message of input score when the initials are blacklisted"
+  },
+  "initialsInvalidMessage": "Please enter three initials",
+  "@initialsInvalidMessage": {
+    "description": "Text shown on the message of input score when the initials are invalid"
+  },
+  "playAgainLabel": "Play again",
+  "@playAgainLabel": {
+    "description": "Text for the play again label"
+  },
+  "errorInputScoreMessage": "Opps! Something went wrong",
+  "@errorInputScoreMessage": {
+    "description": "Text shown on the message of input score when there is an error"
+  },
+  "youScoredMessage": "Wohoo!\nYou scored!",
+  "@youScoredMessage": {
+    "description": "Text shown on the message of input score when the user scored"
   }
 }

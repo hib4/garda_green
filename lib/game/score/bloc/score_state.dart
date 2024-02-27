@@ -11,7 +11,7 @@ enum InitialsFormStatus {
 
 class ScoreState extends Equatable {
   const ScoreState({
-    this.initials = const ['', '', '', ''],
+    this.initials = const ['', '', ''],
     this.initialsStatus = InitialsFormStatus.initial,
   });
 

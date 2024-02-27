@@ -43,6 +43,12 @@ dev_dependencies:
   mocktail: ^1.0.0
   very_good_analysis: ^5.1.0
 
+dependency_overrides:
+  nes_ui:
+    git:
+      url: https://github.com/erickzanardo/nes_ui.git
+      ref: main
+
 flutter:
   uses-material-design: true
   generate: true

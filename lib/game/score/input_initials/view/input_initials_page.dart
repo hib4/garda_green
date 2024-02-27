@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/score/bloc/score_bloc.dart';
 import 'package:garda_green/game/score/input_initials/input_initials.dart';
+import 'package:garda_green/l10n/l10n.dart';
 import 'package:garda_green/leaderboard/leaderboard.dart';
-import 'package:nes_ui/nes_ui.dart';
 
 class InputInitialsPage extends StatefulWidget {
   const InputInitialsPage({required this.score, super.key});
@@ -45,37 +46,44 @@ class _InputInitialsPageState extends State<InputInitialsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocProvider(
       create: (_) => _scoreBloc,
       child: Scaffold(
-        body: BlocBuilder<ScoreBloc, ScoreState>(
-          builder: (context, state) {
-            return Visibility(
-              visible: state.initialsStatus != InitialsFormStatus.success,
-              child: const Center(
-                child: Column(
-                  children: [
-                    Spacer(flex: 3),
-                    Text(
-                      'Enter your initials for\nthe leaderboard',
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      '(Never put your real initials here)',
-                      style: TextStyle(
-                        fontSize: 8,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 24),
-                    InitialsFormView(),
-                    Spacer(flex: 3),
-                  ],
-                ),
-              ),
-            );
+        body: PopScope(
+          onPopInvoked: (_) {
+            context.read<AudioController>().musicPlayer.setVolume(0.5);
+            context.read<AudioController>().changeMusic(Song.background);
           },
+          child: BlocBuilder<ScoreBloc, ScoreState>(
+            builder: (context, state) {
+              return Visibility(
+                visible: state.initialsStatus != InitialsFormStatus.success,
+                child: Center(
+                  child: Column(
+                    children: [
+                      const Spacer(flex: 3),
+                      Text(
+                        l10n.enterInitialsLabel,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        l10n.enterInitialsMessage,
+                        style: const TextStyle(
+                          fontSize: 8,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 24),
+                      const InitialsFormView(),
+                      const Spacer(flex: 3),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

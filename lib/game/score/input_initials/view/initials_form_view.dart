@@ -89,7 +89,7 @@ class _InitialsFormViewState extends State<InitialsFormView> {
                 const NesHourglassLoadingIndicator()
               else
                 WobblyButton(
-                  child: const Text('Enter'),
+                  child: Text(l10n.enterLabel),
                   onPressed: () {
                     FocusScope.of(context).unfocus();
                     context
@@ -99,11 +99,9 @@ class _InitialsFormViewState extends State<InitialsFormView> {
                 ),
               const SizedBox(height: 16),
               if (state.initialsStatus == InitialsFormStatus.blacklisted)
-                const _ErrorTextWidget(
-                  'Please use appropriate and distinct initials',
-                )
+                _ErrorTextWidget(l10n.initialsBlacklistedMessage)
               else if (state.initialsStatus == InitialsFormStatus.invalid)
-                const _ErrorTextWidget('Please enter four initials'),
+                _ErrorTextWidget(l10n.initialsInvalidMessage),
             ],
           ),
         );
@@ -225,7 +223,6 @@ class _InitialFormFieldState extends State<_InitialFormField> {
           }),
           EmptyCharacterAtEndFormatter(),
         ],
-        // style: textTheme.displayMedium,
         textCapitalization: TextCapitalization.characters,
         decoration: const InputDecoration(
           border: InputBorder.none,
@@ -251,10 +248,10 @@ class _ErrorBody extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 40),
-        const _ErrorTextWidget('Opps! Something went wrong'),
+        _ErrorTextWidget(l10n.errorInputScoreMessage),
         const SizedBox(height: 32),
         ElevatedButton.icon(
-          label: const Text('Play again'),
+          label: Text(l10n.playAgainLabel),
           icon: const Icon(Icons.refresh, size: 16),
           onPressed: () {
             Navigator.pushReplacement(context, GameView.route());
@@ -281,7 +278,9 @@ class _ErrorTextWidget extends StatelessWidget {
           size: 20,
         ),
         const SizedBox(width: 8),
-        Text(text),
+        Flexible(
+          child: Text(text),
+        ),
       ],
     );
   }
