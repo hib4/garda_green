@@ -83,14 +83,17 @@ android {
     productFlavors { 
         production {
             dimension "default"
+            applicationIdSuffix ""
             manifestPlaceholders = [appName: "Garda Green"]
         }
         staging {
             dimension "default"
+            applicationIdSuffix ".dev"
             manifestPlaceholders = [appName: "[STG] Garda Green"]
         }
         development {
             dimension "default"
+            applicationIdSuffix ".dev"
             manifestPlaceholders = [appName: "[DEV] Garda Green"]
         }
     }
