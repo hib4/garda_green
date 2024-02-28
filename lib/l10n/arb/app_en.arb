@@ -1,44 +1,104 @@
 {
   "@@locale": "en",
-  "startVeryGoodGame": "Start the Very Good Game",
-  "@startVeryGoodGame": {
-    "description": "The initial start button of the game application"
+  "gameTitle": "Garda Green",
+  "@gameTitle": {
+    "description": "Text for the game title"
   },
-  "titleAppBarTitle": "Garda Green",
-  "@titleAppBarTitle": {
-    "description": "Text shown in the AppBar of the Title Page"
+  "playLabel": "Play",
+  "@playLabel": {
+    "description": "Text for the play label"
   },
-  "titleButtonStart": "Start",
-  "@titleButtonStart": {
-    "description": "Text shown in the start Button of the Title Page"
+  "leaderboardLabel": "Leaderboard",
+  "@leaderboardLabel": {
+    "description": "Text for the leaderboard label"
   },
-  "loading": "Loading {label}...",
-  "@loading": {
-    "description": "Text for the loading page",
+  "settingsLabel": "Settings",
+  "@settingsLabel": {
+    "description": "Text for the settings label"
+  },
+  "pausedLabel": "Paused",
+  "@pausedLabel": {
+    "description": "Text for the paused label"
+  },
+  "resumeLabel": "Resume",
+  "@resumeLabel": {
+    "description": "Text for the resume label"
+  },
+  "retryLabel": "Retry",
+  "@retryLabel": {
+    "description": "Text for the retry label"
+  },
+  "restartLabel": "Restart",
+  "@restartLabel": {
+    "description": "Text for the restart label"
+  },
+  "exitLabel": "Exit",
+  "@exitLabel": {
+    "description": "Text for the exit label"
+  },
+  "gameOverLabel": "Game Over",
+  "@gameOverLabel": {
+    "description": "Text shown in the game over page when game is over"
+  },
+  "triviaLabel": "Trivia",
+  "@triviaLabel": {
+    "description": "Text shown in the trivia popup when game is over"
+  },
+  "downloadLabel": "Download",
+  "@downloadLabel": {
+    "description": "Text for the download label"
+  },
+  "downloadMessage": "We do not recommend playing on mobile web yet for a better experience.",
+  "@downloadMessage": {
+    "description": "Text for the download message"
+  },
+  "submitScoreLabel": "Submit score",
+  "@submitScoreLabel": {
+    "description": "Text for the submit score label"
+  },
+  "gameScoreLabel": "{points} Pts",
+  "@gameScoreLabel": {
+    "description": "Text shown on the game score label",
     "placeholders": {
-      "label": {
-        "type": "String",
-        "example": "Stuff",
-        "description": "Label for what is being loaded"
+      "points": {
+        "type": "int"
       }
     }
   },
-  "loadingPhaseLabel": "{loadingPhase, select, audio{Delightful music} images{Beautiful scenery} other{ }}",
-  "@loadingPhaseLabel": {
-    "description": "Loading phases",
-    "placeholders": {
-      "loadingPhase": {}
-    }
+  "enterLabel": "Enter",
+  "@enterLabel": {
+    "description": "Text for the enter label"
   },
-  "counterText": "{count, plural, =1{You have tapped the unicorn 1 time} other{You have tapped the unicorn {count} times}}",
-  "@counterText": {
-    "description": "Text for the counter component",
-    "placeholders": {
-      "count": {
-        "type": "int",
-        "example": "10",
-        "description": "The current count"
-      }
-    }
+  "enterInitialsLabel": "Enter your initials for\nthe leaderboard",
+  "@enterInitialsLabel": {
+    "description": "Text shown on the input score"
+  },
+  "enterInitialsMessage": "(Never put your real initials here)",
+  "@enterInitialsMessage": {
+    "description": "Text shown on the message of input score"
+  },
+  "initialsBlacklistedMessage": "Please use appropriate initials",
+  "@initialsBlacklistedMessage": {
+    "description": "Text shown on the message of input score when the initials are blacklisted"
+  },
+  "initialsInvalidMessage": "Please enter three initials",
+  "@initialsInvalidMessage": {
+    "description": "Text shown on the message of input score when the initials are invalid"
+  },
+  "playAgainLabel": "Play again",
+  "@playAgainLabel": {
+    "description": "Text for the play again label"
+  },
+  "errorInputScoreMessage": "Opps! Something went wrong",
+  "@errorInputScoreMessage": {
+    "description": "Text shown on the message of input score when there is an error"
+  },
+  "youScoredMessage": "Wohoo!\nYou scored!",
+  "@youScoredMessage": {
+    "description": "Text shown on the message of input score when the user scored"
+  },
+  "leaderboardEmptyMessage": "Woopps! Leaderboard\ncurrently empty.",
+  "@leaderboardEmptyMessage": {
+    "description": "Text shown on the message of leaderboard when it is empty"
   }
 }

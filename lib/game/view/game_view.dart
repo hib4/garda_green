@@ -1,0 +1,84 @@
+import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:garda_green/audio/audio.dart';
+import 'package:garda_green/game/game.dart';
+import 'package:garda_green/game/menu/menu.dart';
+import 'package:garda_green/game/pause/pause.dart';
+import 'package:garda_green/game/score/view/score_page.dart';
+import 'package:garda_green/settings/settings.dart';
+import 'package:garda_green/theme/theme.dart';
+import 'package:garda_green/utils/utils.dart';
+
+class GameView extends StatelessWidget {
+  const GameView({super.key});
+
+  static const id = 'game_view';
+
+  static Page<void> page() {
+    return const MaterialPage<void>(
+      child: GameView(),
+    );
+  }
+
+  static PageRoute<void> route() {
+    return buildPageTransition(
+      child: const GameView(),
+      color: AppColors.transition,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      onPopInvoked: (_) {
+        context.read<AudioController>().musicPlayer.setVolume(0.5);
+        context.read<AudioController>().changeMusic(Song.background);
+      },
+      child: GameWidget<TheRunnerGame>(
+        game: TheRunnerGame(
+          audioController: context.read<AudioController>(),
+          settingsController: context.read<SettingsController>(),
+          aspectRatio: MediaQuery.of(context).size.aspectRatio,
+          top: MediaQuery.of(context).viewPadding.top,
+          isMobile: context.isSmall,
+          playMusic: true,
+        ),
+        overlayBuilderMap: {
+          PausePage.id: (context, game) {
+            return PausePage(
+              onResumePressed: () => onResume(context, game),
+              onRestartPressed: () => onRestart(context),
+              onExitPressed: () => onExit(context),
+            );
+          },
+          ScorePage.id: (context, game) {
+            return ScorePage(
+              score: game.score,
+            );
+          },
+        },
+      ),
+    );
+  }
+
+  void onResume(BuildContext context, TheRunnerGame game) {
+    game.overlays.remove(PausePage.id);
+    game.resumeEngine();
+  }
+
+  void onRestart(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      GameView.route(),
+    );
+  }
+
+  void onExit(BuildContext context) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MenuPage.route(),
+      (route) => false,
+    );
+  }
+}

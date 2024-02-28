@@ -1,54 +1,69 @@
-import 'package:audioplayers/audioplayers.dart';
-import 'package:flame/cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:garda_green/app_lifecycle/app_lifecycle.dart';
+import 'package:garda_green/audio/audio.dart';
+import 'package:garda_green/authentication/authentication.dart';
+import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/l10n/l10n.dart';
-import 'package:garda_green/loading/loading.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:garda_green/leaderboard/leaderboard.dart';
+import 'package:garda_green/settings/settings.dart';
+import 'package:garda_green/theme/app_colors.dart';
+import 'package:garda_green/trivia/trivia.dart';
+import 'package:nes_ui/nes_ui.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({
+    required this.audioController,
+    required this.settingsController,
+    required this.authenticationRepository,
+    required this.leaderboardRepository,
+    required this.triviaRepository,
+    super.key,
+  });
+
+  final AudioController audioController;
+  final SettingsController settingsController;
+  final AuthenticationRepository authenticationRepository;
+  final LeaderboardRepository leaderboardRepository;
+  final TriviaRepository triviaRepository;
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => PreloadCubit(
-            Images(prefix: ''),
-            AudioCache(prefix: ''),
-          )..loadSequentially(),
-        ),
-      ],
-      child: const AppView(),
-    );
-  }
-}
-
-class AppView extends StatelessWidget {
-  const AppView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: const Color(0xFF2A48DF),
-        appBarTheme: const AppBarTheme(color: Color(0xFF2A48DF)),
-        colorScheme: ColorScheme.fromSwatch(
-          accentColor: const Color(0xFF2A48DF),
-        ),
-        scaffoldBackgroundColor: const Color(0xFFFFFFFF),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(const Color(0xFF2A48DF)),
+    return AppLifecycleObserver(
+      child: MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider<AudioController>(
+            create: (context) {
+              final lifecycleNotifier =
+                  context.read<ValueNotifier<AppLifecycleState>>();
+              return audioController
+                ..attachLifecycleNotifier(lifecycleNotifier);
+            },
+            lazy: false,
           ),
+          RepositoryProvider<SettingsController>.value(
+            value: settingsController,
+          ),
+          RepositoryProvider<AuthenticationRepository>.value(
+            value: authenticationRepository..signInAnonymously(),
+          ),
+          RepositoryProvider<LeaderboardRepository>.value(
+            value: leaderboardRepository,
+          ),
+          RepositoryProvider<TriviaRepository>.value(
+            value: triviaRepository,
+          ),
+        ],
+        child: MaterialApp(
+          theme: flutterNesTheme(
+            primaryColor: AppColors.primary,
+          ),
+          title: 'Garda Green',
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          home: const MenuPage(),
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const LoadingPage(),
     );
   }
 }

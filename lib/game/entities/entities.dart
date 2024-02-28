@@ -1,1 +1,3 @@
-export 'unicorn/unicorn.dart';
+export 'player.dart';
+export 'star.dart';
+export 'trash.dart';
