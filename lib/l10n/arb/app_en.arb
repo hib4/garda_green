@@ -48,7 +48,7 @@
   "@downloadLabel": {
     "description": "Text for the download label"
   },
-  "downloadMessage": "For a better experience, we do not recommend playing on mobile web yet.",
+  "downloadMessage": "We do not recommend playing on mobile web yet for a better experience.",
   "@downloadMessage": {
     "description": "Text for the download message"
   },
@@ -96,5 +96,9 @@
   "youScoredMessage": "Wohoo!\nYou scored!",
   "@youScoredMessage": {
     "description": "Text shown on the message of input score when the user scored"
+  },
+  "leaderboardEmptyMessage": "Woopps! Leaderboard\ncurrently empty.",
+  "@leaderboardEmptyMessage": {
+    "description": "Text shown on the message of leaderboard when it is empty"
   }
 }

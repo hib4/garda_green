@@ -97,5 +97,9 @@
   "youScoredMessage": "Wohoo!\nKamu mendapat skor!",
   "@youScoredMessage": {
     "description": "Teks untuk pesan mendapatkan skor"
+  },
+  "leaderboardEmptyMessage": "Woopps! Papan peringkat\nmasih kosong",
+  "@leaderboardEmptyMessage": {
+    "description": "Teks untuk pesan papan peringkat kosong"
   }
 }

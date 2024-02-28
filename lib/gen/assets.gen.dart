@@ -20,16 +20,45 @@ class $AssetsImagesGen {
   AssetGenImage get backgroundMenuMobile =>
       const AssetGenImage('assets/images/background_menu_mobile.png');
 
+  /// File path: assets/images/game_logo.png
+  AssetGenImage get gameLogo =>
+      const AssetGenImage('assets/images/game_logo.png');
+
+  /// File path: assets/images/game_over_desktop.png
+  AssetGenImage get gameOverDesktop =>
+      const AssetGenImage('assets/images/game_over_desktop.png');
+
+  /// File path: assets/images/game_over_mobile.png
+  AssetGenImage get gameOverMobile =>
+      const AssetGenImage('assets/images/game_over_mobile.png');
+
   /// File path: assets/images/garda_green_tilemap.png
   AssetGenImage get gardaGreenTilemap =>
       const AssetGenImage('assets/images/garda_green_tilemap.png');
+
+  /// File path: assets/images/leaderboard_desktop.png
+  AssetGenImage get leaderboardDesktop =>
+      const AssetGenImage('assets/images/leaderboard_desktop.png');
+
+  /// File path: assets/images/leaderboard_mobile.png
+  AssetGenImage get leaderboardMobile =>
+      const AssetGenImage('assets/images/leaderboard_mobile.png');
 
   /// File path: assets/images/pause.png
   AssetGenImage get pause => const AssetGenImage('assets/images/pause.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [backgroundMenuDesktop, backgroundMenuMobile, gardaGreenTilemap, pause];
+  List<AssetGenImage> get values => [
+        backgroundMenuDesktop,
+        backgroundMenuMobile,
+        gameLogo,
+        gameOverDesktop,
+        gameOverMobile,
+        gardaGreenTilemap,
+        leaderboardDesktop,
+        leaderboardMobile,
+        pause
+      ];
 }
 
 class $AssetsLicensesGen {

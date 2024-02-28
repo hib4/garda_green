@@ -7,7 +7,6 @@ import 'package:garda_green/game/settings/game_settings.dart';
 import 'package:garda_green/game/view/game_view.dart';
 import 'package:garda_green/gen/assets.gen.dart';
 import 'package:garda_green/l10n/l10n.dart';
-import 'package:garda_green/theme/app_colors.dart';
 import 'package:garda_green/utils/utils.dart';
 import 'package:nes_ui/nes_ui.dart';
 
@@ -42,7 +41,6 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final isSmall = context.isSmall;
     return Scaffold(
       body: DecoratedBox(
@@ -58,27 +56,9 @@ class _MenuPageState extends State<MenuPage> {
         child: Center(
           child: Column(
             children: [
-              const Spacer(flex: 2),
-              Stack(
-                children: [
-                  NesRunningText(
-                    text: l10n.gameTitle,
-                    textStyle: TextStyle(
-                      fontSize: context.isSmall ? 32 : 38,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 3
-                        ..color = Colors.white,
-                    ),
-                  ),
-                  NesRunningText(
-                    text: l10n.gameTitle,
-                    textStyle: TextStyle(
-                      color: AppColors.green,
-                      fontSize: context.isSmall ? 32 : 38,
-                    ),
-                  ),
-                ],
+              const Spacer(),
+              Assets.images.gameLogo.image(
+                width: context.isSmall ? 282 : 380,
               ),
               Spacer(flex: context.isSmall ? 6 : 8),
               if (isSmall && kIsWeb)
