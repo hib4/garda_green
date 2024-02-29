@@ -186,6 +186,7 @@ class _LeaderboardContent extends StatelessWidget {
               ),
             )
           : ListView.builder(
+        padding: EdgeInsets.zero,
               itemCount: entries.length,
               itemBuilder: (context, index) {
                 return Padding(
