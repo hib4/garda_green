@@ -116,14 +116,12 @@
   <object id="29" name="Player" type="Player" x="240" y="48">
    <point/>
   </object>
-  <object id="35" type="Star" gid="19" x="232" y="152" width="16" height="16"/>
-  <object id="36" type="Star" gid="19" x="264" y="264" width="16" height="16"/>
+  <object id="35" type="Star" gid="19" x="240" y="124" width="16" height="16"/>
+  <object id="36" type="Star" gid="19" x="256" y="264" width="16" height="16"/>
   <object id="37" type="Star" gid="19" x="192" y="440" width="16" height="16"/>
   <object id="38" type="Star" gid="19" x="192" y="620" width="16" height="16"/>
-  <object id="39" type="Trash" gid="85" x="264" y="200" width="16" height="16"/>
-  <object id="40" type="Trash" gid="85" x="248" y="116" width="16" height="16"/>
-  <object id="41" type="Trash" gid="85" x="248" y="312" width="16" height="16"/>
-  <object id="42" type="Trash" gid="85" x="228" y="400" width="16" height="16"/>
+  <object id="40" type="Trash" gid="85" x="236" y="180" width="16" height="16"/>
+  <object id="42" type="Trash" gid="85" x="264" y="372" width="16" height="16"/>
   <object id="43" type="Trash" gid="85" x="200" y="552" width="16" height="16"/>
   <object id="48" name="Checkpoint" type="Checkpoint" x="232" y="256" width="48" height="16"/>
  </objectgroup>
