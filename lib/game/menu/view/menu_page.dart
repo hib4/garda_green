@@ -2,12 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:garda_green/audio/audio.dart';
+import 'package:garda_green/constants/constants.dart';
 import 'package:garda_green/game/leaderboard/leaderboard.dart';
 import 'package:garda_green/game/view/game_view.dart';
 import 'package:garda_green/gen/assets.gen.dart';
 import 'package:garda_green/l10n/l10n.dart';
 import 'package:garda_green/utils/utils.dart';
 import 'package:nes_ui/nes_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -149,7 +151,9 @@ class _MobileWebNotAvailablePage extends StatelessWidget {
             const SizedBox(height: 16),
             WobblyButton(
               type: NesButtonType.success,
-              onPressed: () {},
+              onPressed: () {
+                launchUrl(Uri.parse(Urls.playStoreLink));
+              },
               child: Text(l10n.downloadLabel),
             ),
           ],

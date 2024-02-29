@@ -5,7 +5,7 @@ import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/game.dart';
 import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/game/pause/pause.dart';
-import 'package:garda_green/game/score/view/score_page.dart';
+import 'package:garda_green/game/score/score.dart';
 import 'package:garda_green/settings/settings.dart';
 import 'package:garda_green/theme/theme.dart';
 import 'package:garda_green/utils/utils.dart';
@@ -64,8 +64,8 @@ class _GameViewState extends State<GameView> {
           _game.overlays.add(PausePage.id);
         }
       },
-      child: GameWidget<GardaGreenGame>(
-        game: _game,
+      child: GameWidget<GardaGreenGame>.controlled(
+        gameFactory: () => _game,
         overlayBuilderMap: {
           PausePage.id: (context, game) {
             return PausePage(
