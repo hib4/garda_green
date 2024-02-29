@@ -20,8 +20,8 @@
             "scale": 0.7314999999999999,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 153.11004784688998,
-                "y": 397.81271360218733
+                "x": 151.74299384825702,
+                "y": 396.4456596035544
             }
         },
         "level.tmx#tilemap_packed": {
@@ -32,11 +32,11 @@
                 3,
                 4
             ],
-            "scale": 2,
-            "selectedLayer": 1,
+            "scale": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 262,
-                "y": 78
+                "x": 280.3333333333333,
+                "y": 709
             }
         },
         "level_1.tmx#tilemap_packed": {
@@ -48,11 +48,11 @@
                 7,
                 4
             ],
-            "scale": 2,
-            "selectedLayer": 2,
+            "scale": 8,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 328,
-                "y": 26.5
+                "x": 215.75,
+                "y": 441.5
             }
         },
         "level_2.tmx#tilemap_packed": {
