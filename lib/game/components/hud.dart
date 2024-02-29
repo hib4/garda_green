@@ -11,7 +11,7 @@ import 'package:garda_green/game/components/input.dart';
 import 'package:garda_green/game/game.dart';
 
 class Hud extends PositionComponent
-    with ParentIsA<Viewport>, HasGameReference<TheRunnerGame> {
+    with ParentIsA<Viewport>, HasGameReference<GardaGreenGame> {
   Hud({
     required this.playerSprite,
     required this.starSprite,

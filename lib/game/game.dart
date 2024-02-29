@@ -1,1 +1,1 @@
-export 'the_runner_game.dart';
+export 'garda_green_game.dart';

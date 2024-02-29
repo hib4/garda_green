@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:garda_green/game/game.dart';
 
 class Input extends Component
-    with KeyboardHandler, HasGameReference<TheRunnerGame> {
+    with KeyboardHandler, HasGameReference<GardaGreenGame> {
   Input({Map<LogicalKeyboardKey, VoidCallback>? keyCallbacks})
       : _keyCallbacks = keyCallbacks ?? <LogicalKeyboardKey, VoidCallback>{};
 

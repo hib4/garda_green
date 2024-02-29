@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/leaderboard/leaderboard.dart';
@@ -81,26 +83,35 @@ class _MenuButtons extends StatelessWidget {
     final l10n = context.l10n;
     return Column(
       children: [
-        SizedBox(
-          width: 150,
+        ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 150),
           child: WobblyButton(
             type: NesButtonType.success,
             onPressed: () {
               Navigator.push(context, GameView.route());
             },
-            child: Text(l10n.playLabel),
+            child: Text(
+              l10n.playLabel,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
         const SizedBox(height: 16),
-        WobblyButton(
-          onPressed: () {
-            Navigator.push(context, LeaderboardPage.route());
-          },
-          child: Text(l10n.leaderboardLabel),
+        ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 150),
+          child: WobblyButton(
+            onPressed: () {
+              Navigator.push(context, LeaderboardPage.route());
+            },
+            child: Text(
+              l10n.leaderboardLabel,
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
         const SizedBox(height: 16),
-        SizedBox(
-          width: 150,
+        ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 150),
           child: WobblyButton(
             type: NesButtonType.warning,
             onPressed: () async {
@@ -109,7 +120,10 @@ class _MenuButtons extends StatelessWidget {
                 builder: (context) => const GureeDialog(),
               );
             },
-            child: Text(l10n.settingsLabel),
+            child: Text(
+              l10n.settingsLabel,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       ],
