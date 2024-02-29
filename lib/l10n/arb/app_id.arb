@@ -32,9 +32,21 @@
   "@restartLabel": {
     "description": "Teks untuk label mulai ulang"
   },
+  "backLabel": "Kembali",
+  "@backLabel": {
+    "description": "Teks untuk label kembali"
+  },
   "exitLabel": "Keluar",
   "@exitLabel": {
     "description": "Teks untuk label keluar"
+  },
+  "musicLabel": "Musik",
+  "@musicLabel": {
+    "description": "Teks untuk label musik"
+  },
+  "sfxLabel": "SFX",
+  "@sfxLabel": {
+    "description": "Teks untuk label sfx"
   },
   "gameOverLabel": "Permainan Berakhir",
   "@gameOverLabel": {

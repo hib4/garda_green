@@ -344,7 +344,10 @@ class TheRunnerGame extends FlameGame
       _fader.add(OpacityEffect.fadeIn(LinearEffectController(1)));
       await Future<void>.delayed(
         const Duration(seconds: 1),
-        () => overlays.add(ScorePage.id),
+        () {
+          pauseEngine();
+          overlays.add(ScorePage.id);
+        },
       );
     }
   }

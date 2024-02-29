@@ -97,11 +97,11 @@ class Hud extends PositionComponent
         anchor: Anchor.center,
         position: parent.virtualSize * 0.5,
         knob: CircleComponent(
-          radius: 8,
+          radius: 7,
           paint: Paint()..color = Colors.black.withOpacity(0.08),
         ),
         background: CircleComponent(
-          radius: 20,
+          radius: 18,
           paint: Paint()
             ..color = Colors.black.withOpacity(0.05)
             ..style = PaintingStyle.stroke

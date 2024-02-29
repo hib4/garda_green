@@ -44,7 +44,7 @@ class GareenDialog extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal:
-            context.isSmall ? 24 : MediaQuery.of(context).size.width / 4,
+            context.isSmall ? 24 : MediaQuery.of(context).size.width / 3,
         vertical: 24,
       ),
       child: Align(
