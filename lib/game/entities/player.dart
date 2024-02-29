@@ -12,8 +12,8 @@ import 'package:garda_green/game/game.dart';
 
 class Player extends PositionComponent
     with
-        HasGameReference<TheRunnerGame>,
-        HasAncestor<TheRunnerGame>,
+        HasGameReference<GardaGreenGame>,
+        HasAncestor<GardaGreenGame>,
         HasTimeScale {
   Player({required Sprite sprite, super.position, super.priority})
       : _body = SpriteComponent(sprite: sprite, anchor: Anchor.center);

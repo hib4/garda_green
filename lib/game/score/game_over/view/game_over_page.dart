@@ -78,7 +78,7 @@ class _GameOverPageState extends State<GameOverPage> {
                         padding: EdgeInsets.symmetric(
                           horizontal: context.isSmall ? 48 : 84,
                         ),
-                        height: MediaQuery.of(context).size.height * .42,
+                        height: MediaQuery.of(context).size.height * .43,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -116,7 +116,10 @@ class _GameOverPageState extends State<GameOverPage> {
                               child: WobblyButton(
                                 type: NesButtonType.warning,
                                 onPressed: () => onRestart(context),
-                                child: Text(l10n.retryLabel),
+                                child: Text(
+                                  l10n.retryLabel,
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 16),

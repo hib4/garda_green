@@ -45,7 +45,10 @@ class PausePage extends StatelessWidget {
               width: 150,
               child: WobblyButton(
                 onPressed: onResumePressed,
-                child: Text(l10n.resumeLabel),
+                child: Text(
+                  l10n.resumeLabel,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -54,7 +57,10 @@ class PausePage extends StatelessWidget {
               child: WobblyButton(
                 type: NesButtonType.warning,
                 onPressed: onRestartPressed,
-                child: Text(l10n.restartLabel),
+                child: Text(
+                  l10n.restartLabel,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -63,7 +69,10 @@ class PausePage extends StatelessWidget {
               child: WobblyButton(
                 type: NesButtonType.error,
                 onPressed: onExitPressed,
-                child: Text(l10n.exitLabel),
+                child: Text(
+                  l10n.exitLabel,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             const SizedBox(height: 24),

@@ -103,6 +103,7 @@ class LeaderboardView extends StatelessWidget {
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 24),
                           BlocBuilder<LeaderboardBloc, LeaderboardState>(
