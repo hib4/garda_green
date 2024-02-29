@@ -35,6 +35,7 @@ dev_dependencies:
   build_runner: ^2.4.8
   flame_test: ^1.16.0
   flutter_gen_runner: ^5.4.0
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
   json_serializable: ^6.7.1
@@ -59,3 +60,24 @@ flutter:
     - family: Press Start 2P
       fonts:
         - asset: assets/fonts/PressStart2P-Regular.ttf
+
+flutter_launcher_icons:
+  android: true
+  adaptive_icon_foreground: "./icon.png"
+  adaptive_icon_background: "#ffffff"
+  min_sdk_android: 26
+  image_path: './icon.png'
+  ios: 'icon.png'
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: 'icon.png'
+    background_color: '#0175C2'
+    theme_color: '#0175C2'
+  windows:
+    generate: true
+    image_path: 'icon.png'
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: 'icon.png'
