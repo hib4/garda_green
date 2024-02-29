@@ -70,9 +70,11 @@ class Hud extends PositionComponent
       scale: Vector2.all(game.isOffTrail ? 0.6 : 1.0),
     );
 
+    final top = game.top < 10.0 ? 10.0 : game.top / 2;
+
     _player.position.setValues(
       16,
-      game.isMobile ? 10 : parent.virtualSize.y - 20,
+      game.isMobile ? top : parent.virtualSize.y - 20,
     );
 
     _life.position.setValues(
