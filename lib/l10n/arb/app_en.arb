@@ -32,9 +32,21 @@
   "@restartLabel": {
     "description": "Text for the restart label"
   },
+  "backLabel": "Back",
+  "@backLabel": {
+    "description": "Text for the back label"
+  },
   "exitLabel": "Exit",
   "@exitLabel": {
     "description": "Text for the exit label"
+  },
+  "musicLabel": "Music",
+  "@musicLabel": {
+    "description": "Text for the music label"
+  },
+  "sfxLabel": "SFX",
+  "@sfxLabel": {
+    "description": "Text for the sfx label"
   },
   "gameOverLabel": "Game Over",
   "@gameOverLabel": {

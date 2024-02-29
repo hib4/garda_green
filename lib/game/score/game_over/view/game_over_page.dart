@@ -75,7 +75,9 @@ class _GameOverPageState extends State<GameOverPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 16),
                       child: NesContainer(
-                        padding: const EdgeInsets.symmetric(horizontal: 48),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.isSmall ? 48 : 84,
+                        ),
                         height: MediaQuery.of(context).size.height * .42,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

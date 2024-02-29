@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/leaderboard/leaderboard.dart';
-import 'package:garda_green/game/settings/game_settings.dart';
 import 'package:garda_green/game/view/game_view.dart';
 import 'package:garda_green/gen/assets.gen.dart';
 import 'package:garda_green/l10n/l10n.dart';
@@ -104,8 +103,11 @@ class _MenuButtons extends StatelessWidget {
           width: 150,
           child: WobblyButton(
             type: NesButtonType.warning,
-            onPressed: () {
-              Navigator.push(context, GameSettings.route());
+            onPressed: () async {
+              await showDialog(
+                context: context,
+                builder: (context) => const GureeDialog(),
+              );
             },
             child: Text(l10n.settingsLabel),
           ),

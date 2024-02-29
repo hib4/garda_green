@@ -121,7 +121,15 @@ class LeaderboardView extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(height: 16),
+                WobblyButton(
+                  type: NesButtonType.error,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(l10n.backLabel),
+                ),
+                const SizedBox(height: 16),
               ],
             ),
           ),

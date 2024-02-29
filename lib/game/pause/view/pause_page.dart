@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:garda_green/l10n/l10n.dart';
+import 'package:garda_green/settings/settings.dart';
 import 'package:garda_green/theme/app_colors.dart';
 import 'package:garda_green/utils/components/components.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -27,6 +29,7 @@ class PausePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final settings = context.watch<SettingsController>();
     return Scaffold(
       backgroundColor: AppColors.overlayBackground,
       body: Center(
@@ -61,6 +64,43 @@ class PausePage extends StatelessWidget {
                 type: NesButtonType.error,
                 onPressed: onExitPressed,
                 child: Text(l10n.exitLabel),
+              ),
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: 150,
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.musicLabel),
+                trailing: ValueListenableBuilder<bool>(
+                  valueListenable: settings.musicMuted,
+                  builder: (context, value, child) {
+                    return NesCheckBox(
+                      value: !value,
+                      onChange: (value) {
+                        settings.toggleMusicMuted();
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 150,
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.sfxLabel),
+                trailing: ValueListenableBuilder<bool>(
+                  valueListenable: settings.sfxMuted,
+                  builder: (_, value, __) {
+                    return NesCheckBox(
+                      value: !value,
+                      onChange: (value) {
+                        settings.toggleSfxMuted();
+                      },
+                    );
+                  },
+                ),
               ),
             ),
           ],
