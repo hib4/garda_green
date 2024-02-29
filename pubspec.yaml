@@ -29,6 +29,7 @@ dependencies:
   json_annotation: ^4.8.1
   nes_ui: ^0.17.0
   shared_preferences: ^2.2.2
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   bloc_test: ^9.1.6
