@@ -8,7 +8,7 @@
   "@playLabel": {
     "description": "Teks untuk label mulai"
   },
-  "leaderboardLabel": "Papan Peringkat",
+  "leaderboardLabel": "Peringkat",
   "@leaderboardLabel": {
     "description": "Teks untuk label papan peringkat"
   },
@@ -20,9 +20,9 @@
   "@pausedLabel": {
     "description": "Teks untuk label dijeda"
   },
-  "resumeLabel": "Melanjutkan",
+  "resumeLabel": "Lanjut",
   "@resumeLabel": {
-    "description": "Teks untuk label melanjutkan"
+    "description": "Teks untuk label lanjut"
   },
   "retryLabel": "Mulai awal",
   "@retryLabel": {
@@ -32,11 +32,23 @@
   "@restartLabel": {
     "description": "Teks untuk label mulai ulang"
   },
+  "backLabel": "Kembali",
+  "@backLabel": {
+    "description": "Teks untuk label kembali"
+  },
   "exitLabel": "Keluar",
   "@exitLabel": {
     "description": "Teks untuk label keluar"
   },
-  "gameOverLabel": "Permainan Berakhir",
+  "musicLabel": "Musik",
+  "@musicLabel": {
+    "description": "Teks untuk label musik"
+  },
+  "sfxLabel": "SFX",
+  "@sfxLabel": {
+    "description": "Teks untuk label sfx"
+  },
+  "gameOverLabel": "Game Over",
   "@gameOverLabel": {
     "description": "Teks ditampilkan di halaman game over saat permainan selesai"
   },

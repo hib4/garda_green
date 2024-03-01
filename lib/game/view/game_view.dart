@@ -5,12 +5,12 @@ import 'package:garda_green/audio/audio.dart';
 import 'package:garda_green/game/game.dart';
 import 'package:garda_green/game/menu/menu.dart';
 import 'package:garda_green/game/pause/pause.dart';
-import 'package:garda_green/game/score/view/score_page.dart';
+import 'package:garda_green/game/score/score.dart';
 import 'package:garda_green/settings/settings.dart';
 import 'package:garda_green/theme/theme.dart';
 import 'package:garda_green/utils/utils.dart';
 
-class GameView extends StatelessWidget {
+class GameView extends StatefulWidget {
   const GameView({super.key});
 
   static const id = 'game_view';
@@ -29,27 +29,49 @@ class GameView extends StatelessWidget {
   }
 
   @override
+  State<GameView> createState() => _GameViewState();
+}
+
+class _GameViewState extends State<GameView> {
+  late final GardaGreenGame _game;
+  bool _isInitialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInitialized) {
+      final audioController = context.read<AudioController>();
+      final settingsController = context.read<SettingsController>();
+      _game = GardaGreenGame(
+        audioController: audioController,
+        settingsController: settingsController,
+        aspectRatio: MediaQuery.of(context).size.aspectRatio,
+        top: MediaQuery.of(context).viewPadding.top,
+        isMobile: context.isSmall,
+        playMusic: true,
+      );
+      _isInitialized = true;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (_) {
-        context.read<AudioController>().musicPlayer.setVolume(0.5);
-        context.read<AudioController>().changeMusic(Song.background);
+      canPop: false,
+      onPopInvoked: (value) {
+        if (!value) {
+          _game.pauseEngine();
+          _game.overlays.add(PausePage.id);
+        }
       },
-      child: GameWidget<TheRunnerGame>(
-        game: TheRunnerGame(
-          audioController: context.read<AudioController>(),
-          settingsController: context.read<SettingsController>(),
-          aspectRatio: MediaQuery.of(context).size.aspectRatio,
-          top: MediaQuery.of(context).viewPadding.top,
-          isMobile: context.isSmall,
-          playMusic: true,
-        ),
+      child: GameWidget<GardaGreenGame>.controlled(
+        gameFactory: () => _game,
         overlayBuilderMap: {
           PausePage.id: (context, game) {
             return PausePage(
-              onResumePressed: () => onResume(context, game),
-              onRestartPressed: () => onRestart(context),
-              onExitPressed: () => onExit(context),
+              onResumePressed: () => _onResume(game),
+              onRestartPressed: () => _onRestart(context),
+              onExitPressed: () => _onExit(context),
             );
           },
           ScorePage.id: (context, game) {
@@ -62,19 +84,19 @@ class GameView extends StatelessWidget {
     );
   }
 
-  void onResume(BuildContext context, TheRunnerGame game) {
+  void _onResume(GardaGreenGame game) {
     game.overlays.remove(PausePage.id);
     game.resumeEngine();
   }
 
-  void onRestart(BuildContext context) {
+  void _onRestart(BuildContext context) {
     Navigator.pushReplacement(
       context,
       GameView.route(),
     );
   }
 
-  void onExit(BuildContext context) {
+  void _onExit(BuildContext context) {
     Navigator.pushAndRemoveUntil(
       context,
       MenuPage.route(),

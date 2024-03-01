@@ -7,7 +7,7 @@ import 'package:garda_green/game/entities/entities.dart';
 import 'package:garda_green/game/game.dart';
 
 class Trash extends PositionComponent
-    with CollisionCallbacks, HasGameReference<TheRunnerGame> {
+    with CollisionCallbacks, HasGameReference<GardaGreenGame> {
   Trash({required Sprite sprite, super.position, this.onHit})
       : _body = SpriteComponent(sprite: sprite, anchor: Anchor.center);
 

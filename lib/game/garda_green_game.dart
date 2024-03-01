@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flame/collisions.dart';
@@ -18,9 +19,9 @@ import 'package:garda_green/game/score/score.dart';
 import 'package:garda_green/settings/settings.dart';
 import 'package:garda_green/theme/theme.dart';
 
-class TheRunnerGame extends FlameGame
+class GardaGreenGame extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
-  TheRunnerGame({
+  GardaGreenGame({
     required this.audioController,
     required this.settingsController,
     required this.aspectRatio,
@@ -68,6 +69,14 @@ class TheRunnerGame extends FlameGame
       ZigzagEffectController(period: 0.2),
     ),
   );
+
+  final _random = Random();
+
+  final List<List<int>> _trashCoordinates = [
+    [7, 0],
+    [7, 1],
+    [8, 0],
+  ];
 
   late World _world;
   late CameraComponent _camera;
@@ -241,9 +250,14 @@ class TheRunnerGame extends FlameGame
             );
             await _world.add(star);
           case 'Trash':
+            final randomIndex = _random.nextInt(3);
+            final chosenCoordinates = _trashCoordinates[randomIndex];
             final trash = Trash(
               position: Vector2(object.x, object.y),
-              sprite: _spriteSheet.getSprite(7, 0),
+              sprite: _spriteSheet.getSprite(
+                chosenCoordinates[0],
+                chosenCoordinates[1],
+              ),
               onHit: _onHit,
             );
             await _world.add(trash);
@@ -344,7 +358,10 @@ class TheRunnerGame extends FlameGame
       _fader.add(OpacityEffect.fadeIn(LinearEffectController(1)));
       await Future<void>.delayed(
         const Duration(seconds: 1),
-        () => overlays.add(ScorePage.id),
+        () {
+          pauseEngine();
+          overlays.add(ScorePage.id);
+        },
       );
     }
   }
@@ -382,6 +399,10 @@ class TheRunnerGame extends FlameGame
     _isLevelCompleted = true;
     _currentSection = (_currentSection + 1) % _sections.length;
     _totalSections++;
+    if (_nLives < 3) {
+      ++_nLives;
+      _hud.updateLifeCount(_nLives);
+    }
     _startNextLevel();
   }
 

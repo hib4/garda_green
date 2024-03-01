@@ -103,6 +103,7 @@ class LeaderboardView extends StatelessWidget {
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 24),
                           BlocBuilder<LeaderboardBloc, LeaderboardState>(
@@ -121,7 +122,15 @@ class LeaderboardView extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(height: 16),
+                WobblyButton(
+                  type: NesButtonType.error,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(l10n.backLabel),
+                ),
+                const SizedBox(height: 16),
               ],
             ),
           ),
@@ -177,6 +186,7 @@ class _LeaderboardContent extends StatelessWidget {
               ),
             )
           : ListView.builder(
+        padding: EdgeInsets.zero,
               itemCount: entries.length,
               itemBuilder: (context, index) {
                 return Padding(

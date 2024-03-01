@@ -11,7 +11,7 @@ import 'package:garda_green/game/entities/player.dart';
 import 'package:garda_green/game/game.dart';
 
 class Star extends PositionComponent
-    with CollisionCallbacks, HasGameReference<TheRunnerGame> {
+    with CollisionCallbacks, HasGameReference<GardaGreenGame> {
   Star({required Sprite sprite, super.position, this.onCollected})
       : _body = SpriteComponent(sprite: sprite, anchor: Anchor.center);
 

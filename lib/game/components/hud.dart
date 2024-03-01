@@ -11,7 +11,7 @@ import 'package:garda_green/game/components/input.dart';
 import 'package:garda_green/game/game.dart';
 
 class Hud extends PositionComponent
-    with ParentIsA<Viewport>, HasGameReference<TheRunnerGame> {
+    with ParentIsA<Viewport>, HasGameReference<GardaGreenGame> {
   Hud({
     required this.playerSprite,
     required this.starSprite,
@@ -70,9 +70,11 @@ class Hud extends PositionComponent
       scale: Vector2.all(game.isOffTrail ? 0.6 : 1.0),
     );
 
+    final top = game.top < 10.0 ? 10.0 : game.top / 2;
+
     _player.position.setValues(
       16,
-      game.isMobile ? 10 : parent.virtualSize.y - 20,
+      game.isMobile ? top : parent.virtualSize.y - 20,
     );
 
     _life.position.setValues(
@@ -97,11 +99,11 @@ class Hud extends PositionComponent
         anchor: Anchor.center,
         position: parent.virtualSize * 0.5,
         knob: CircleComponent(
-          radius: 8,
+          radius: 7,
           paint: Paint()..color = Colors.black.withOpacity(0.08),
         ),
         background: CircleComponent(
-          radius: 20,
+          radius: 18,
           paint: Paint()
             ..color = Colors.black.withOpacity(0.05)
             ..style = PaintingStyle.stroke
