@@ -57,6 +57,7 @@ flutter:
     - assets/tiles/
     - assets/trivia/
     - assets/licenses/press_start_2p/
+    - assets/waste/
 
   fonts:
     - family: Press Start 2P

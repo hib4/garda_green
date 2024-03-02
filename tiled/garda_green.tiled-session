@@ -15,7 +15,7 @@
             "scaleInDock": 1
         },
         "garda_green_tilemap.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 11,
             "scaleInEditor": 4
         },
         "level.tmx": {
@@ -31,14 +31,14 @@
         },
         "level_1.tmx": {
             "expandedObjectLayers": [
-                3,
-                4
+                4,
+                3
             ],
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 41,
-                "y": 138
+                "x": 205,
+                "y": 533
             }
         },
         "level_1.tmx#tilemap_packed": {
@@ -47,14 +47,14 @@
         },
         "level_2.tmx": {
             "expandedObjectLayers": [
-                7,
-                4
+                4,
+                7
             ],
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 41,
-                "y": 6
+                "x": 239.5,
+                "y": 1151.5
             }
         },
         "level_2.tmx#tilemap_packed": {
@@ -91,8 +91,8 @@
     ],
     "project": "garda_green.tiled-project",
     "recentFiles": [
-        "level_1.tmx",
         "level_2.tmx",
+        "level_1.tmx",
         "level_3.tmx",
         "level.tmx",
         "garda_green_tilemap.tsx"
