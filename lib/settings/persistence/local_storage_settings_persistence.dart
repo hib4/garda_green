@@ -24,6 +24,12 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
   }
 
   @override
+  Future<bool> getInitialIntroduction() async {
+    final prefs = await instanceFuture;
+    return prefs.getBool('initialIntroduction') ?? true;
+  }
+
+  @override
   Future<void> saveMusicMuted({required bool active}) async {
     final prefs = await instanceFuture;
     await prefs.setBool('musicMuted', active);
@@ -33,5 +39,11 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
   Future<void> saveSfxMuted({required bool active}) async {
     final prefs = await instanceFuture;
     await prefs.setBool('sfxMuted', active);
+  }
+
+  @override
+  Future<void> saveInitialIntroduction() async {
+    final prefs = await instanceFuture;
+    await prefs.setBool('initialIntroduction', false);
   }
 }

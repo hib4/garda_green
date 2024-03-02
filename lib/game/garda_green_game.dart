@@ -198,6 +198,7 @@ class GardaGreenGame extends FlameGame
     map = await TiledComponent.load(
       _sections[_currentSection],
       Vector2.all(16),
+      useAtlas: false,
     );
 
     final tiles = images.fromCache('../images/garda_green_tilemap.png');
@@ -420,6 +421,7 @@ class GardaGreenGame extends FlameGame
     map = await TiledComponent.load(
       _sections[_currentSection],
       Vector2.all(16),
+      useAtlas: false,
     );
 
     input.hAxis = 0;

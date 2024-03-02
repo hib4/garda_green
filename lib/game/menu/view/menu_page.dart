@@ -7,12 +7,16 @@ import 'package:garda_green/game/leaderboard/leaderboard.dart';
 import 'package:garda_green/game/view/game_view.dart';
 import 'package:garda_green/gen/assets.gen.dart';
 import 'package:garda_green/l10n/l10n.dart';
+import 'package:garda_green/settings/settings.dart';
+import 'package:garda_green/utils/components/introduction_dialog.dart';
 import 'package:garda_green/utils/utils.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MenuPage extends StatefulWidget {
-  const MenuPage({super.key});
+  const MenuPage({super.key, this.isShowIntroduction = false});
+
+  final bool isShowIntroduction;
 
   static const id = 'menu';
 
@@ -22,9 +26,11 @@ class MenuPage extends StatefulWidget {
     );
   }
 
-  static PageRoute<void> route() {
+  static PageRoute<void> route({bool isShowIntroduction = false}) {
     return PageRouteBuilder(
-      pageBuilder: (_, __, ___) => const MenuPage(),
+      pageBuilder: (_, __, ___) => MenuPage(
+        isShowIntroduction: isShowIntroduction,
+      ),
     );
   }
 
@@ -37,6 +43,19 @@ class _MenuPageState extends State<MenuPage> {
   void initState() {
     context.read<AudioController>().musicPlayer.setVolume(0.5);
     context.read<AudioController>().changeMusic(Song.background);
+
+    if (widget.isShowIntroduction) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        final settings = context.read<SettingsController>();
+        if (settings.initialIntroduction.value) {
+          await showDialog(
+            context: context,
+            builder: (context) => const IntroductionDialog(),
+          );
+          settings.saveInitialIntroduction();
+        }
+      });
+    }
     super.initState();
   }
 
@@ -61,12 +80,12 @@ class _MenuPageState extends State<MenuPage> {
               Assets.images.gameLogo.image(
                 width: context.isSmall ? 282 : 380,
               ),
-              Spacer(flex: context.isSmall ? 6 : 8),
+              const Spacer(flex: 10),
               if (isSmall && kIsWeb)
                 const _MobileWebNotAvailablePage()
               else
                 const _MenuButtons(),
-              const Spacer(flex: 2),
+              const Spacer(),
             ],
           ),
         ),
@@ -117,7 +136,7 @@ class _MenuButtons extends StatelessWidget {
             onPressed: () async {
               await showDialog(
                 context: context,
-                builder: (context) => const GureeDialog(),
+                builder: (context) => const SettingsDialog(),
               );
             },
             child: Text(
@@ -125,6 +144,16 @@ class _MenuButtons extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+        ),
+        const SizedBox(height: 24),
+        NesIconButton(
+          icon: NesIcons.questionMarkBlock,
+          onPress: () async {
+            await showDialog(
+              context: context,
+              builder: (context) => const IntroductionDialog(),
+            );
+          },
         ),
       ],
     );

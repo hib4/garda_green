@@ -5,8 +5,8 @@ import 'package:garda_green/settings/settings.dart';
 import 'package:garda_green/utils/components/components.dart';
 import 'package:nes_ui/nes_ui.dart';
 
-class GureeDialog extends StatelessWidget {
-  const GureeDialog({super.key});
+class SettingsDialog extends StatelessWidget {
+  const SettingsDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

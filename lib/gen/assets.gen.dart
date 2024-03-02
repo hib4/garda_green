@@ -47,6 +47,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/pause.png
   AssetGenImage get pause => const AssetGenImage('assets/images/pause.png');
 
+  /// File path: assets/images/splash_screen.png
+  AssetGenImage get splashScreen =>
+      const AssetGenImage('assets/images/splash_screen.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         backgroundMenuDesktop,
@@ -57,7 +61,8 @@ class $AssetsImagesGen {
         gardaGreenTilemap,
         leaderboardDesktop,
         leaderboardMobile,
-        pause
+        pause,
+        splashScreen
       ];
 }
 
@@ -129,6 +134,32 @@ class $AssetsTriviaGen {
   List<String> get values => [triviaEn, triviaId];
 }
 
+class $AssetsWasteGen {
+  const $AssetsWasteGen();
+
+  /// File path: assets/waste/lila.png
+  AssetGenImage get lila => const AssetGenImage('assets/waste/lila.png');
+
+  /// File path: assets/waste/plastic_bag.png
+  AssetGenImage get plasticBag =>
+      const AssetGenImage('assets/waste/plastic_bag.png');
+
+  /// File path: assets/waste/plastic_cup.png
+  AssetGenImage get plasticCup =>
+      const AssetGenImage('assets/waste/plastic_cup.png');
+
+  /// File path: assets/waste/star.png
+  AssetGenImage get star => const AssetGenImage('assets/waste/star.png');
+
+  /// File path: assets/waste/trash_pile.png
+  AssetGenImage get trashPile =>
+      const AssetGenImage('assets/waste/trash_pile.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [lila, plasticBag, plasticCup, star, trashPile];
+}
+
 class $AssetsLicensesPressStart2pGen {
   const $AssetsLicensesPressStart2pGen();
 
@@ -148,6 +179,7 @@ class Assets {
   static const $AssetsSfxGen sfx = $AssetsSfxGen();
   static const $AssetsTilesGen tiles = $AssetsTilesGen();
   static const $AssetsTriviaGen trivia = $AssetsTriviaGen();
+  static const $AssetsWasteGen waste = $AssetsWasteGen();
 }
 
 class AssetGenImage {

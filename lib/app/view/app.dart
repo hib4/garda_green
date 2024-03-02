@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:garda_green/app_lifecycle/app_lifecycle.dart';
@@ -9,6 +10,7 @@ import 'package:garda_green/leaderboard/leaderboard.dart';
 import 'package:garda_green/settings/settings.dart';
 import 'package:garda_green/theme/app_colors.dart';
 import 'package:garda_green/trivia/trivia.dart';
+import 'package:garda_green/utils/utils.dart';
 import 'package:nes_ui/nes_ui.dart';
 
 class App extends StatelessWidget {
@@ -29,6 +31,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isShowIntroduction = !context.isSmall && !kIsWeb;
     return AppLifecycleObserver(
       child: MultiRepositoryProvider(
         providers: [
@@ -61,7 +64,9 @@ class App extends StatelessWidget {
           title: 'Garda Green',
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
-          home: const MenuPage(),
+          home: MenuPage(
+            isShowIntroduction: !isShowIntroduction,
+          ),
         ),
       ),
     );
