@@ -1,0 +1,105 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level_1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "D:/2024 work/google game competi/tilemap_test2.tsx": {
+            "scaleInDock": 1
+        },
+        "garda_green_tilemap.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 4
+        },
+        "level.tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 260.75,
+                "y": 364.75
+            }
+        },
+        "level.tmx#tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "level_1.tmx": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 41,
+                "y": 138
+            }
+        },
+        "level_1.tmx#tilemap_packed": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "level_2.tmx": {
+            "expandedObjectLayers": [
+                7,
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 41,
+                "y": 6
+            }
+        },
+        "level_2.tmx#tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "level_3.tmx": {
+            "expandedObjectLayers": [
+                7,
+                4
+            ],
+            "scale": 0.33,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 415.15151515151524,
+                "y": -327.27272727272725
+            }
+        },
+        "level_3.tmx#tilemap_packed": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Flutter Project/garda_green/assets/tiles",
+    "last.externalTilesetPath": "C:/Flutter Project/garda_green/tiled",
+    "last.imagePath": "C:/Flutter Project/garda_green/tiled",
+    "map.height": 144,
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "level_1.tmx",
+        "level_2.tmx"
+    ],
+    "project": "garda_green.tiled-project",
+    "recentFiles": [
+        "level_1.tmx",
+        "level_2.tmx",
+        "level_3.tmx",
+        "level.tmx",
+        "garda_green_tilemap.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

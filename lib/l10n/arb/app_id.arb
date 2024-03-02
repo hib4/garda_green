@@ -1,0 +1,117 @@
+{
+  "@@locale": "id",
+  "gameTitle": "Garda Green",
+  "@gameTitle": {
+    "description": "Teks untuk judul game"
+  },
+  "playLabel": "Mulai",
+  "@playLabel": {
+    "description": "Teks untuk label mulai"
+  },
+  "leaderboardLabel": "Peringkat",
+  "@leaderboardLabel": {
+    "description": "Teks untuk label papan peringkat"
+  },
+  "settingsLabel": "Pengaturan",
+  "@settingsLabel": {
+    "description": "Teks untuk label pengaturan"
+  },
+  "pausedLabel": "Dijeda",
+  "@pausedLabel": {
+    "description": "Teks untuk label dijeda"
+  },
+  "resumeLabel": "Lanjut",
+  "@resumeLabel": {
+    "description": "Teks untuk label lanjut"
+  },
+  "retryLabel": "Mulai awal",
+  "@retryLabel": {
+    "description": "Teks untuk label mulai awal"
+  },
+  "restartLabel": "Mulai ulang",
+  "@restartLabel": {
+    "description": "Teks untuk label mulai ulang"
+  },
+  "backLabel": "Kembali",
+  "@backLabel": {
+    "description": "Teks untuk label kembali"
+  },
+  "exitLabel": "Keluar",
+  "@exitLabel": {
+    "description": "Teks untuk label keluar"
+  },
+  "musicLabel": "Musik",
+  "@musicLabel": {
+    "description": "Teks untuk label musik"
+  },
+  "sfxLabel": "SFX",
+  "@sfxLabel": {
+    "description": "Teks untuk label sfx"
+  },
+  "gameOverLabel": "Game Over",
+  "@gameOverLabel": {
+    "description": "Teks ditampilkan di halaman game over saat permainan selesai"
+  },
+  "triviaLabel": "Trivia",
+  "@triviaLabel": {
+    "description": "Teks ditampilkan di popup trivia saat permainan selesai"
+  },
+  "downloadLabel": "Unduh",
+  "@downloadLabel": {
+    "description": "Teks untuk label unduh"
+  },
+  "downloadMessage": "Untuk pengalaman yang lebih baik, kami belum menyarankan untuk bermain di web seluler.",
+  "@downloadMessage": {
+    "description": "Teks untuk pesan unduh"
+  },
+  "submitScoreLabel": "Kirim skor",
+  "@submitScoreLabel": {
+    "description": "Text for the submit score label"
+  },
+  "gameScoreLabel": "{points} Pts",
+  "@gameScoreLabel": {
+    "description": "Teks ditampilkan pada label skor permainan",
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "enterLabel": "Masukkan",
+  "@enterLabel": {
+    "description": "Teks untuk label masukkan"
+  },
+  "enterInitialsLabel": "Masukkan inisial Anda untuk papan peringkat",
+  "@enterInitialsLabel": {
+    "description": "Teks ditampilkan pada label input skor"
+  },
+  "enterInitialsMessage": "(Jangan pernah masukkan inisial asli Anda di sini)",
+  "@enterInitialsMessage": {
+    "description": "Teks ditampilkan pada pesan input skor"
+  },
+
+  "initialsBlacklistedMessage": "Tolong gunakan inisial yang sesuai",
+  "@initialsBlacklistedMessage": {
+    "description": "Teks ditampilkan pada pesan input skor ketika inisial yang digunakan adalah inisial yang dilarang"
+  },
+  "initialsInvalidMessage": "Silakan masukkan tiga inisial",
+  "@initialsInvalidMessage": {
+    "description": "Teks ditampilkan pada pesan input skor ketika inisial yang digunakan adalah inisial yang tidak valid"
+  },
+  "playAgainLabel": "Main lagi",
+  "@playAgainLabel": {
+    "description": "Teks untuk label main lagi"
+  },
+  "errorInputScoreMessage": "Ups! Ada yang tidak beres",
+  "@errorInputScoreMessage": {
+    "description": "Teks untuk pesan error input skor"
+  },
+  "youScoredMessage": "Wohoo!\nKamu mendapat skor!",
+  "@youScoredMessage": {
+    "description": "Teks untuk pesan mendapatkan skor"
+  },
+  "leaderboardEmptyMessage": "Woopps! Papan peringkat\nmasih kosong",
+  "@leaderboardEmptyMessage": {
+    "description": "Teks untuk pesan papan peringkat kosong"
+  }
+}

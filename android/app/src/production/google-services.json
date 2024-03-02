@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60399823875",
+    "project_id": "garda-green",
+    "storage_bucket": "garda-green.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60399823875:android:21ef479d965e876865f236",
+        "android_client_info": {
+          "package_name": "me.hib4.garda_green"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5tEViH7eCAxzmkCBgSGva3FtRnRLj0u4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
