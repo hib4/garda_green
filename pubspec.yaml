@@ -41,7 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.7.1
-  logger: ^2.0.2+1
+  logger: ^2.1.0
   mockingjay: ^0.5.0
   mocktail: ^1.0.3
   very_good_analysis: ^5.1.0
