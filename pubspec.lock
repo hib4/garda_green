@@ -785,10 +785,10 @@ packages:
     dependency: "direct main"
     description:
       name: nes_ui
-      sha256: "32857496688fa4022a90c072761234f2062b53a8889c3b1fd820dcb80895bf31"
+      sha256: "16e02d22f3cd2e8b778dea1c791339f13a10c70ed71ec8e3eb105750e4d6e1bd"
       url: "https://pub.dev"
     source: hosted
-    version: "0.17.0"
+    version: "0.18.0"
   nested:
     dependency: transitive
     description:
