@@ -1,13 +1,15 @@
+# To run: flutter pub run flutter_native_splash:create --flavor production
+
 flutter_native_splash:
-  color: "#ffffff"
+  color: "#fdfdf5"
   image: assets/images/splash_screen.png
-  color_dark: "#ffffff"
+  color_dark: "#fdfdf5"
   image_dark: assets/images/splash_screen.png
 
   android_12:
-    color: "#ffffff"
+    color: "#fdfdf5"
     image: assets/images/splash_screen.png
-    color_dark: "#ffffff"
+    color_dark: "#fdfdf5"
     image_dark: assets/images/splash_screen.png
 
   ios: true
