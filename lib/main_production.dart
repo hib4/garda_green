@@ -37,6 +37,7 @@ void main() async {
   final settings = SettingsController(
     persistence: LocalStorageSettingsPersistence(),
   );
+  await settings.loadStateFromPersistence();
 
   final audio = AudioController()..attachSettings(settings);
   await audio.initialize();

@@ -11,7 +11,11 @@ abstract class SettingsPersistence {
 
   Future<bool> getSfxMuted({required bool defaultValue});
 
+  Future<bool> getInitialIntroduction();
+
   Future<void> saveMusicMuted({required bool active});
 
   Future<void> saveSfxMuted({required bool active});
+
+  Future<void> saveInitialIntroduction();
 }

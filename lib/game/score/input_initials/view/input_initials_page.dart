@@ -5,6 +5,7 @@ import 'package:garda_green/game/score/bloc/score_bloc.dart';
 import 'package:garda_green/game/score/input_initials/input_initials.dart';
 import 'package:garda_green/l10n/l10n.dart';
 import 'package:garda_green/leaderboard/leaderboard.dart';
+import 'package:garda_green/utils/utils.dart';
 
 class InputInitialsPage extends StatefulWidget {
   const InputInitialsPage({required this.score, super.key});
@@ -65,13 +66,16 @@ class _InputInitialsPageState extends State<InputInitialsPage> {
                       const Spacer(flex: 3),
                       Text(
                         l10n.enterInitialsLabel,
+                        style: TextStyle(
+                          fontSize: context.isSmall ? 16 : 22,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         l10n.enterInitialsMessage,
-                        style: const TextStyle(
-                          fontSize: 8,
+                        style: TextStyle(
+                          fontSize: context.isSmall ? 10 : 12,
                         ),
                         textAlign: TextAlign.center,
                       ),

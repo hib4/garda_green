@@ -1,6 +1,6 @@
 name: garda_green
 description: The Garda Green game
-version: 1.0.0+1
+version: 1.0.1+2
 publish_to: none
 
 environment:
@@ -57,6 +57,7 @@ flutter:
     - assets/tiles/
     - assets/trivia/
     - assets/licenses/press_start_2p/
+    - assets/waste/
 
   fonts:
     - family: Press Start 2P

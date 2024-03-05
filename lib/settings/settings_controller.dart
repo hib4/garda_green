@@ -19,6 +19,8 @@ class SettingsController {
 
   ValueNotifier<bool> sfxMuted = ValueNotifier(false);
 
+  ValueNotifier<bool> initialIntroduction = ValueNotifier(false);
+
   /// Asynchronously loads values from the injected persistence store.
   Future<void> loadStateFromPersistence() async {
     await Future.wait([
@@ -31,6 +33,9 @@ class SettingsController {
       _persistence
           .getSfxMuted(defaultValue: kIsWeb)
           .then((value) => sfxMuted.value = value),
+      _persistence
+          .getInitialIntroduction()
+          .then((value) => initialIntroduction.value = value),
     ]);
   }
 
@@ -42,5 +47,10 @@ class SettingsController {
   void toggleSfxMuted() {
     sfxMuted.value = !sfxMuted.value;
     _persistence.saveSfxMuted(active: sfxMuted.value);
+  }
+
+  void saveInitialIntroduction() {
+    initialIntroduction.value = false;
+    _persistence.saveInitialIntroduction();
   }
 }

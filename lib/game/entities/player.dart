@@ -62,7 +62,7 @@ class Player extends PositionComponent
           position: position,
           particle: Particle.generate(
             count: 2,
-            lifespan: 2,
+            lifespan: 1.5,
             generator: (index) => TranslatedParticle(
               child: CircleParticle(
                 paint: _trailParticlePaint,
