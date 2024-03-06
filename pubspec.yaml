@@ -15,7 +15,7 @@ dependencies:
   firebase_analytics: ^10.8.7
   firebase_auth: ^4.17.6
   firebase_core: ^2.25.5
-  firebase_crashlytics: ^3.4.16
+  firebase_crashlytics: ^3.4.17
   flame: ^1.16.0
   flame_audio: ^2.10.0
   flame_behaviors: ^1.1.0
