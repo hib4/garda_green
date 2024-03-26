@@ -13,7 +13,7 @@ dependencies:
   cloud_firestore: ^4.15.6
   equatable: ^2.0.5
   firebase_analytics: ^10.8.7
-  firebase_auth: ^4.17.6
+  firebase_auth: ^4.18.0
   firebase_core: ^2.25.5
   firebase_crashlytics: ^3.4.16
   flame: ^1.16.0
